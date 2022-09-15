@@ -1,0 +1,71 @@
+year,profession,no_per_1000,ratio_to_population
+2006,Doctors,1.6,1:635
+2006,Nurses,4.8,1:210
+2006,Dentists,0.3,"1:3,199"
+2006,Pharmacists,0.3,"1:3,097"
+2006,Optometrists and Opticians,na,-
+2007,Doctors,1.6,1:621
+2007,Nurses,4.9,1:205
+2007,Dentists,0.3,"1:3,247"
+2007,Pharmacists,0.3,"1:3,094"
+2007,Optometrists and Opticians,na,-
+2008,Doctors,1.6,1:617
+2008,Nurses,5,1:200
+2008,Dentists,0.3,"1:3,261"
+2008,Pharmacists,0.3,"1:3,130"
+2008,Optometrists and Opticians,0.4,"1:2,235"
+2009,Doctors,1.7,1:599
+2009,Nurses,5.4,1:186
+2009,Dentists,0.3,"1:3,258"
+2009,Pharmacists,0.3,"1:3,008"
+2009,Optometrists and Opticians,0.5,"1:2,211"
+2010,Doctors,1.8,1:562
+2010,Nurses,5.8,1:173
+2010,Dentists,0.3,"1:3,215"
+2010,Pharmacists,0.4,"1:2,799"
+2010,Optometrists and Opticians,0.5,"1:2,160"
+2011,Doctors,1.9,1:537
+2011,Nurses,6.1,1:163
+2011,Dentists,0.3,"1:3,218"
+2011,Pharmacists,0.4,"1:2,575"
+2011,Optometrists and Opticians,0.4,"1:2,224"
+2012,Doctors,1.9,1:520
+2012,Nurses,6.5,1:154
+2012,Dentists,0.3,"1:3,127"
+2012,Pharmacists,0.4,"1:2,446"
+2012,Optometrists and Opticians,0.4,"1:2,331"
+2013,Doctors,2,1:493
+2013,Nurses,6.7,1:150
+2013,Dentists,0.3,"1:2,965"
+2013,Pharmacists,0.4,"1:2,272"
+2013,Optometrists and Opticians,0.4,"1:2,279"
+2014,Doctors,2.1,1:466
+2014,Nurses,6.9,1:145
+2014,Dentists,0.3,"1:2,871"
+2014,Pharmacists,0.5,"1:2,134"
+2014,Optometrists and Opticians,0.5,"1:2,191"
+2015,Doctors,2.3,1:444
+2015,Nurses,7.0,1:142
+2015,Dentists,0.4,"1:2,687"
+2015,Pharmacists,0.5,"1:2,008"
+2015,Optometrists and Opticians,0.5,"1:2,213"
+2016,Doctors,2.3,1:432
+2016,Nurses,7.2,1:138
+2016,Dentists,0.4,"1:2,551"
+2016,Pharmacists,0.5,"1:1,950"
+2016,Optometrists and Opticians,0.4,"1:2,307"
+2017,Doctors,2.4,1:419
+2017,Nurses,7.4,1:135
+2017,Dentists,0.4,"1:2,448"
+2017,Pharmacists,0.5,"1:1,842"
+2017,Optometrists and Opticians,0.4,"1:2,253"
+2018,Doctors,2.4,1:410
+2018,Nurses,7.5,1:134
+2018,Dentists,0.4,"1:2,386"
+2018,Pharmacists,0.6,"1:1,753"
+2018,Optometrists and Opticians,0.4,"1:2,238"
+2019,Doctors,2.5,1:399
+2019,Nurses,7.5,1:133
+2019,Dentists,0.4,"1:2,304"
+2019,Pharmacists,0.6,"1:1,674"
+2019,Optometrists and Opticians,0.4,"1:2,232"
