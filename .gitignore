@@ -145,3 +145,11 @@ dmypy.json
 *README.html
 *README_cache/
 #*README_files/
+*.pyproj
+*.sln
+.vs/INF1002Assignment1/v17/.suo
+
+
+# pycharm ignore
+.idea/
+venv/
