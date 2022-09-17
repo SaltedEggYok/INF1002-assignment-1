@@ -68,7 +68,7 @@ sorting = cleaning.sort_values('Percantage of vaccinated ppl', ascending=False)
 # In[7]:
 
 
-#setting a condition that only population with more than 1 million should be displayed, calling it 'df1'.
+#setting a condition that only population with more than 1000 should be displayed, calling it 'df1'.
 
 df1 = sorting[(sorting.filter(like='population') > 1000).any(axis=1)]
 
@@ -150,4 +150,6 @@ plt.title('Death Ratio vs Vaccinated People In A Country(%)')
 plt.xlabel('Death Ratio')
 plt.ylabel('Vaccinated People in a Country(%)')
 plt.show()
+
+
 
