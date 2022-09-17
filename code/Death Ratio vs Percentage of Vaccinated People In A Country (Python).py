@@ -28,7 +28,7 @@ pd.set_option('display.max_columns', 50)
 
 #displays up to 20000 rows
 
-pd.set_option('display.max_rows', 20000)
+pd.set_option('display.max_rows', 100)
 
 
 # In[3]:
@@ -68,7 +68,7 @@ sorting = cleaning.sort_values('Percantage of vaccinated ppl', ascending=False)
 # In[7]:
 
 
-#setting a condition that only population with more than 1000 should be displayed, calling it 'df1'.
+#setting a condition that only population with more than 1,000 should be displayed, calling it 'df1'.
 
 df1 = sorting[(sorting.filter(like='population') > 1000).any(axis=1)]
 
@@ -139,7 +139,7 @@ print("Mean squared error: %.2f"
 print('Variance score: %.2f' % r2_score(y_test, lin_reg_pred))
 
 
-# In[ ]:
+# In[14]:
 
 
 #plotting the graph for test dataset
@@ -150,6 +150,4 @@ plt.title('Death Ratio vs Vaccinated People In A Country(%)')
 plt.xlabel('Death Ratio')
 plt.ylabel('Vaccinated People in a Country(%)')
 plt.show()
-
-
 
