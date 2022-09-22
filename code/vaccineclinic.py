@@ -1,8 +1,7 @@
 import pandas as pd
 import numpy as np
 
-clinics_df = pd.read_csv(
-    r"C:\Users\ngzhi\PycharmProjects\pythonProject\phpc-clinics-offering-covid-19-vaccine (1)\18th-august-2022.csv")
+clinics_df = pd.read_csv( r"..\csv\vaccineclinic.csv")
 
 # checking null value
 null = clinics_df.isna().sum()
