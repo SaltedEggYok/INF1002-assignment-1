@@ -1,8 +1,7 @@
 import pandas as pd
 import numpy as np
 
-worldvaxrate_df = pd.read_csv(
-    r"C:\Users\ngzhi\PycharmProjects\pythonProject\vaccine rate dataset 2\Worldwide Vaccine Data.csv")
+worldvaxrate_df = pd.read_csv(r"..\csv\vaccinerate.csv")
 
 # checking null value
 null = worldvaxrate_df.isna().sum()
