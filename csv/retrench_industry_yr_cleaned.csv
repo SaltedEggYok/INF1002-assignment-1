@@ -1,0 +1,156 @@
+year,industry1,industry2,industry3,retrench
+2017,manufacturing,"food, beverages and tobacco","food, beverages and tobacco",190.0
+2017,manufacturing,"paper,rubber,plastic products and printing","paper,rubber,plastic products and printing",480.0
+2017,manufacturing,"petroleum, chemical and pharmaceutical products","petroleum, chemical and pharmaceutical products",300.0
+2017,manufacturing,"fabricated metal products, machinery and equipment","fabricated metal products, machinery and equipment",930.0
+2017,manufacturing,"electronic, computer and optical products","electronic, computer and optical products",920.0
+2017,manufacturing,transport equipment,transport equipment,820.0
+2017,manufacturing,other manufacturing industries,other manufacturing industries,150.0
+2017,construction,construction,construction,2020.0
+2017,services,wholesale and retail trade,wholesale trade,1920.0
+2017,services,wholesale and retail trade,retail trade,260.0
+2017,services,transportation and storage,land transport and supporting services,160.0
+2017,services,transportation and storage,water transport and supporting services,300.0
+2017,services,transportation and storage,air transport and supporting services,20.0
+2017,services,transportation and storage,other transport and storage services,430.0
+2017,services,accommodation and food services,accommodation,120.0
+2017,services,accommodation and food services,food and beverage services,350.0
+2017,services,information and communications,"telecommunications, broadcasting and publishing",500.0
+2017,services,information and communications,it and other information services,420.0
+2017,services,financial and insurance services,financial services,1720.0
+2017,services,financial and insurance services,insurance services,60.0
+2017,services,real estate services,real estate services,70.0
+2017,services,professional services,"legal, accounting and management services",860.0
+2017,services,professional services,architectural and engineering services,560.0
+2017,services,professional services,other professional services,280.0
+2017,services,administrative and support services,security and investigation,120.0
+2017,services,administrative and support services,cleaning and landscaping,70.0
+2017,services,administrative and support services,other adminstrative and support services,250.0
+2017,services,"community, social and personal services",public administration and education,40.0
+2017,services,"community, social and personal services",health and social services,50.0
+2017,services,"community, social and personal services","arts, entertainment and recreation",240.0
+2017,services,"community, social and personal services","other community, social and personal services",130.0
+2018,manufacturing,"food, beverages and tobacco","food, beverages and tobacco",200.0
+2018,manufacturing,"paper,rubber,plastic products and printing","paper,rubber,plastic products and printing",160.0
+2018,manufacturing,"petroleum, chemical and pharmaceutical products","petroleum, chemical and pharmaceutical products",180.0
+2018,manufacturing,"fabricated metal products, machinery and equipment","fabricated metal products, machinery and equipment",870.0
+2018,manufacturing,"electronic, computer and optical products","electronic, computer and optical products",670.0
+2018,manufacturing,transport equipment,transport equipment,310.0
+2018,manufacturing,other manufacturing industries,other manufacturing industries,190.0
+2018,construction,construction,construction,1200.0
+2018,services,wholesale and retail trade,wholesale trade,1580.0
+2018,services,wholesale and retail trade,retail trade,210.0
+2018,services,transportation and storage,land transport and supporting services,200.0
+2018,services,transportation and storage,water transport and supporting services,180.0
+2018,services,transportation and storage,air transport and supporting services,20.0
+2018,services,transportation and storage,other transport and storage services,310.0
+2018,services,accommodation and food services,accommodation,10.0
+2018,services,accommodation and food services,food and beverage services,340.0
+2018,services,information and communications,"telecommunications, broadcasting and publishing",650.0
+2018,services,information and communications,it and other information services,420.0
+2018,services,financial and insurance services,financial services,1240.0
+2018,services,financial and insurance services,insurance services,80.0
+2018,services,real estate services,real estate services,100.0
+2018,services,professional services,"legal, accounting and management services",600.0
+2018,services,professional services,architectural and engineering services,310.0
+2018,services,professional services,other professional services,190.0
+2018,services,administrative and support services,security and investigation,10.0
+2018,services,administrative and support services,cleaning and landscaping,40.0
+2018,services,administrative and support services,other adminstrative and support services,190.0
+2018,services,"community, social and personal services",public administration and education,90.0
+2018,services,"community, social and personal services",health and social services,20.0
+2018,services,"community, social and personal services","arts, entertainment and recreation",130.0
+2018,services,"community, social and personal services","other community, social and personal services",50.0
+2019,manufacturing,"food, beverages and tobacco","food, beverages and tobacco",100.0
+2019,manufacturing,"paper,rubber,plastic products and printing","paper,rubber,plastic products and printing",170.0
+2019,manufacturing,"petroleum, chemical and pharmaceutical products","petroleum, chemical and pharmaceutical products",200.0
+2019,manufacturing,"fabricated metal products, machinery and equipment","fabricated metal products, machinery and equipment",690.0
+2019,manufacturing,"electronic, computer and optical products","electronic, computer and optical products",1160.0
+2019,manufacturing,transport equipment,transport equipment,120.0
+2019,manufacturing,other manufacturing industries,other manufacturing industries,360.0
+2019,construction,construction,construction,860.0
+2019,services,wholesale and retail trade,wholesale trade,1850.0
+2019,services,wholesale and retail trade,retail trade,240.0
+2019,services,transportation and storage,land transport and supporting services,60.0
+2019,services,transportation and storage,water transport and supporting services,80.0
+2019,services,transportation and storage,air transport and supporting services,50.0
+2019,services,transportation and storage,other transport and storage services,580.0
+2019,services,accommodation and food services,accommodation,20.0
+2019,services,accommodation and food services,food and beverage services,150.0
+2019,services,information and communications,"telecommunications, broadcasting and publishing",300.0
+2019,services,information and communications,it and other information services,350.0
+2019,services,financial and insurance services,financial services,1190.0
+2019,services,financial and insurance services,insurance services,110.0
+2019,services,real estate services,real estate services,190.0
+2019,services,professional services,"legal, accounting and management services",640.0
+2019,services,professional services,architectural and engineering services,360.0
+2019,services,professional services,other professional services,220.0
+2019,services,administrative and support services,security and investigation,10.0
+2019,services,administrative and support services,cleaning and landscaping,60.0
+2019,services,administrative and support services,other adminstrative and support services,250.0
+2019,services,"community, social and personal services",public administration and education,90.0
+2019,services,"community, social and personal services",health and social services,100.0
+2019,services,"community, social and personal services","arts, entertainment and recreation",20.0
+2019,services,"community, social and personal services","other community, social and personal services",90.0
+2020,manufacturing,"food, beverages and tobacco","food, beverages and tobacco",330.0
+2020,manufacturing,"paper,rubber,plastic products and printing","paper,rubber,plastic products and printing",230.0
+2020,manufacturing,"petroleum, chemical and pharmaceutical products","petroleum, chemical and pharmaceutical products",160.0
+2020,manufacturing,"fabricated metal products, machinery and equipment","fabricated metal products, machinery and equipment",1410.0
+2020,manufacturing,"electronic, computer and optical products","electronic, computer and optical products",790.0
+2020,manufacturing,transport equipment,transport equipment,1710.0
+2020,manufacturing,other manufacturing industries,other manufacturing industries,700.0
+2020,construction,construction,construction,990.0
+2020,services,wholesale and retail trade,wholesale trade,3810.0
+2020,services,wholesale and retail trade,retail trade,1180.0
+2020,services,transportation and storage,land transport and supporting services,120.0
+2020,services,transportation and storage,water transport and supporting services,250.0
+2020,services,transportation and storage,air transport and supporting services,2000.0
+2020,services,transportation and storage,other transport and storage services,410.0
+2020,services,accommodation and food services,accommodation,710.0
+2020,services,accommodation and food services,food and beverage services,990.0
+2020,services,information and communications,"telecommunications, broadcasting and publishing",570.0
+2020,services,information and communications,it and other information services,620.0
+2020,services,financial and insurance services,financial services,1910.0
+2020,services,financial and insurance services,insurance services,230.0
+2020,services,real estate services,real estate services,140.0
+2020,services,professional services,"legal, accounting and management services",1270.0
+2020,services,professional services,architectural and engineering services,780.0
+2020,services,professional services,other professional services,330.0
+2020,services,administrative and support services,security and investigation,10.0
+2020,services,administrative and support services,cleaning and landscaping,280.0
+2020,services,administrative and support services,other adminstrative and support services,1490.0
+2020,services,"community, social and personal services",public administration and education,230.0
+2020,services,"community, social and personal services",health and social services,40.0
+2020,services,"community, social and personal services","arts, entertainment and recreation",2210.0
+2020,services,"community, social and personal services","other community, social and personal services",210.0
+2021,manufacturing,"food, beverages and tobacco","food, beverages and tobacco",110.0
+2021,manufacturing,"paper,rubber,plastic products and printing","paper,rubber,plastic products and printing",70.0
+2021,manufacturing,"petroleum, chemical and pharmaceutical products","petroleum, chemical and pharmaceutical products",500.0
+2021,manufacturing,"fabricated metal products, machinery and equipment","fabricated metal products, machinery and equipment",150.0
+2021,manufacturing,"electronic, computer and optical products","electronic, computer and optical products",690.0
+2021,manufacturing,transport equipment,transport equipment,130.0
+2021,manufacturing,other manufacturing industries,other manufacturing industries,70.0
+2021,construction,construction,construction,240.0
+2021,services,wholesale and retail trade,wholesale trade,1250.0
+2021,services,wholesale and retail trade,retail trade,160.0
+2021,services,transportation and storage,land transport and supporting services,50.0
+2021,services,transportation and storage,water transport and supporting services,140.0
+2021,services,transportation and storage,air transport and supporting services,220.0
+2021,services,transportation and storage,other transport and storage services,140.0
+2021,services,accommodation and food services,accommodation,40.0
+2021,services,accommodation and food services,food and beverage services,130.0
+2021,services,information and communications,"telecommunications, broadcasting and publishing",380.0
+2021,services,information and communications,it and other information services,470.0
+2021,services,financial and insurance services,financial services,1250.0
+2021,services,financial and insurance services,insurance services,70.0
+2021,services,real estate services,real estate services,100.0
+2021,services,professional services,"legal, accounting and management services",660.0
+2021,services,professional services,architectural and engineering services,160.0
+2021,services,professional services,other professional services,100.0
+2021,services,administrative and support services,security and investigation,10.0
+2021,services,administrative and support services,cleaning and landscaping,20.0
+2021,services,administrative and support services,other adminstrative and support services,510.0
+2021,services,"community, social and personal services",public administration and education,60.0
+2021,services,"community, social and personal services",health and social services,10.0
+2021,services,"community, social and personal services","arts, entertainment and recreation",70.0
+2021,services,"community, social and personal services","other community, social and personal services",40.0
