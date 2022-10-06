@@ -64,7 +64,9 @@ app.layout = dashHTMLComp.Div([
 def display_page(pathname):
     if pathname == '/MainPage':
         return MainPage.layout
-
+    else:
+        x = 0
+        #return home.layout or whatever is the landing page here
 
 if __name__ == '__main__':
     app.run_server(debug=True)
