@@ -1,3 +1,4 @@
+from msilib import text
 from dash import Dash, html, dcc
 import plotly.express as px
 import pandas as pd
@@ -11,7 +12,8 @@ dataFrame = pd.DataFrame({
     "City" : ["SF","SF","SF","Montreal","Montreal","Montreal"]
 })
 
-figure1 = px.bar(dataFrame, x = "Fruit", y="Amount", color = "City", barmode = "group")
+figure1 = px.bar(dataFrame, x = "Fruit", y="Amount", color = "City", barmode = "group",text = "Amount")
+figure1.update_traces(textposition = 'outside')
 
 layout = html.Div(children = [
     html.H1(children = 'Hello Dash'),
