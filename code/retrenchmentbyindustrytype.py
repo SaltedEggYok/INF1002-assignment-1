@@ -15,16 +15,16 @@ df.describe
 df['retrench'].describe()
 
 # Prints out a summary of the number of values in each column for the retrenchment industry data
-df.info()
+#df.info()
 
 # Read retrenchment industry data with null values, containing '-'
 df = pd.read_csv(r"..\csv\retrench_industry_yearly.csv", na_values = ["-"])
-df
+#df
 
 # Prints out a summary of the number of missing values, containing '-'
 sums = df.isnull().sum()
-print(sums)
-print("Total Missing Values:", sums.sum())
+#print(sums)
+#print("Total Missing Values:", sums.sum())
 
 # Make a copy of the original dataframe
 # Make a duplicate and make changes from the duplicate set to not make changes to the original dataset
@@ -34,29 +34,29 @@ df2=df2.dropna(how='any')
 
 # Prints out a summary of the number of missing values after dropping '-', to ensure that there are no more missing values
 sums = df2.isnull().sum()
-print(sums)
-print("Total Missing Values:", sums.sum())
+#print(sums)
+#print("Total Missing Values:", sums.sum())
 
 # Counts the number of rows after dropping missing values
-df.info()
+#df.info()
 
 # Drops any rows that have 'others' value in the industry columns
 df3 = df2.copy()
 df3 = df3[(df3.industry1 != 'others') & (df3.industry2 != 'others') & (df3.industry3 != 'others')]
 
 # Counts the number of rows after dropping 'others' value in the industry columns
-df3.info()
+#df3.info()
 
 # Prints out recent 5 years from 2017 to 2021
 df4 = df3.loc[(df3['year'] >= 2017) & (df3['year'] <= 2021)]
-print(df4)
+#print(df4)
 
 # To export dataframe to csv file after cleaned
 # df4.to_csv('retrench_industry_yr_cleaned.csv', index=False)
 
 # Sorts retrench value in ascending order
 df5 = df4.sort_values(by = ['retrench'])
-print(df5)
+#print(df5)
 
 df5["industry1"].nunique()
 
@@ -69,15 +69,15 @@ df8 = df5.groupby(['industry3'])['retrench'].agg('sum')
 
 # Option a). Look at the retrenchment rate by industry before Covid-19
 df10 = df5.loc[(df5['year'] >= 2017) & (df5['year'] <= 2019)][['year', 'industry3', 'retrench']]
-print(df10)
+#print(df10)
 
 # Option b). Look at the retrenchment rate by industry during Covid-19
 df12 = df5.loc[df5['year']==2020][['year', 'industry3', 'retrench']]
-print(df12)
+#print(df12)
 
 # Option c). Look at the retrenchment rate by industry for the post-recovery Covid-19
 df14 = df5.loc[df5['year']==2021][['year', 'industry3', 'retrench']]
-print(df14)
+#print(df14)
 
 df5["industry3"].nunique()
 
