@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-clinics_df = pd.read_csv(r"..\csv\vaccineclinicnew.csv")
+clinics_df = pd.read_csv(r"..\csv\vaccineclinic.csv")
 
 # checking null value
 null = clinics_df.isna().sum()
