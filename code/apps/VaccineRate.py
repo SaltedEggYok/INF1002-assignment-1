@@ -3,6 +3,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+from dash.dependencies import Input, Output, State
+from dash import Dash, html, dcc
+import dash_bootstrap_components as dbc
+import plotly.express as px
+from app import app
+
 worldvaxrate_df = pd.read_csv(r"..\csv\vaccinerate.csv")
 
 # checking null value
@@ -38,14 +44,19 @@ sg = worldvaxrate_df.loc[worldvaxrate_df["Country"] == "Singapore"]
 # filter to show singapore's statistic
 sgsum = sg.loc[:, ["Country", "% of population vaccinated", "% of population fully vaccinated"]]
 
+#declare layout
+layout = html.Div()
+layoutOption = 1
+"""
 # creating user input
 qns = int(input("This is the following datas we can provide for vaccination rates:"
                 "\n1) top 5 countries with highest vaccinated rate"
                 "\n2) top 5 countries with highest fully vaccinated rate"
-                "\n3) singapore's vaccination rate"
+                "\n3) singapore's vaccination rate"+
                 "\n4) bottom 5 countries with lowest vaccinated rate"
                 "\n5) bottom 5 countries with lowest fully vaccinated rate"
                 "\nPlease choose the number for the data you would like to find out more:"))
+
 
 if qns == 1:
     plt.figure(figsize=(10, 7))
@@ -105,3 +116,104 @@ elif qns == 5:
     plt.show()
 else:
     print("Please enter a valid number")
+"""
+
+
+layout = html.Div(children = [
+    
+    #top text and graph, init below
+    html.Div(id="display-graph"),
+
+    #local navigation buttons
+    html.Div(children=[
+        dcc.RadioItems(id="graphChoice",
+            options=[
+                {'label': 'Highest Vaccinated Rate', 'value':'HVR' },
+                {'label': 'Highest Fully Vaccinated Rate', 'value':'HFVR' },
+                {'label': 'Singapore\' Vaccination Rate', 'value':'SVR' },
+                {'label': 'Lowest Vaccinated Rate', 'value':'LVR' },
+                {'label': 'Lowest Fully Vaccinated Rate', 'value':'LFVR' },
+            ],
+            value = 'HVR',
+            labelStyle={'display':'block'}
+        )
+    ])
+])
+
+@app.callback(Output("display-graph","children"), [[Input('graphChoice','value'),]])
+def swapDisplay(choice):   
+    match choice:
+        case 'HVR':
+            figure1 = px.bar(top5vaxratesum,  x="Country", y="% of population vaccinated", color="Country", text = "% of population vaccinated")
+            figure1.update_traces(textposition = 'outside')
+            return html.Div(children = [                
+                    html.H1(children = "Top 5 countries with highest rate of vaccination"),
+                    #html.Div(children= '''Dash: A web application framework for your data'''),
+                    dcc.Graph(id= 'displayGraph', figure=figure1)
+                    ]
+                )
+        case 'HFVR':
+            figure1 = px.bar(top5fullvaxratesum,  x="Country", y="% of population fully vaccinated", color="Country", text = "% of population fully vaccinated")
+            figure1.update_traces(textposition = 'outside')
+            return html.Div(children = [                
+                    html.H1(children = "Top countries with highest rate of full vaccinations"),
+                    #html.Div(children= '''Dash: A web application framework for your data'''),
+                    dcc.Graph(id= 'displayGraph', figure=figure1)
+                    ]
+                )
+        case 'SVR':
+            figure1 = px.bar(top5vaxratesum,  x="Country", y="% of population vaccinated", color="Country", text = "% of population vaccinated",)
+            figure1.update_traces(textposition = 'outside')
+            return html.Div(children = [                
+                    html.H1(children = "TEMP"),
+                    #html.Div(children= '''Dash: A web application framework for your data'''),
+                    dcc.Graph(id= 'displayGraph', figure=figure1)
+                    ]
+                )        
+        case 'LVR':
+            figure1 = px.bar(bot5vaxratesumsort,  x="Country", y="% of population vaccinated", color="Country", text = "% of population vaccinated")
+            figure1.update_traces(textposition = 'outside')
+            return html.Div(children = [                
+                    html.H1(children = "Bottom 5 countries with lowest rate of vaccination"),
+                    #html.Div(children= '''Dash: A web application framework for your data'''),
+                    dcc.Graph(id= 'displayGraph', figure=figure1)
+                    ]
+                )        
+        case 'LFVR':
+            figure1 = px.bar(bot5fullvaxratesumsort,  x="Country", y="% of population fully vaccinated", color="Country", text = "% of population fully vaccinated")
+            figure1.update_traces(textposition = 'outside')
+            return html.Div(children = [                
+                    html.H1(children = "Bottom countries with lowest rate of full vaccination"),
+                    #html.Div(children= '''Dash: A web application framework for your data'''),
+                    dcc.Graph(id= 'displayGraph', figure=figure1)
+                    ]
+                )        
+
+        case _:
+            return html.Div(children = [                
+                    html.H1(children = "Dead with highest rate of vaccination"),
+                    #html.Div(children= '''Dash: A web application framework for your data'''),
+                    dcc.Graph(id= 'displayGraph', figure=figure1)
+                    ]
+                ) 
+            
+
+"""    
+    if choice == "TopVaccRate":
+        return html.Div(children = 
+            [                
+            html.H1(children = "Top 5 countries with highest rate of vaccination"),
+            #html.Div(children= '''Dash: A web application framework for your data'''),
+            dcc.Graph(id= 'displayGraph', figure=figure1)
+            ]
+        ) 
+    elif choice == "":
+        return html.Div(children = 
+            [                
+            html.H1(children = "Changed"),
+            #html.Div(children= '''Dash: A web application framework for your data'''),
+            dcc.Graph(id= 'displayGraph', figure=figure1)
+            ]
+        ) 
+       
+"""

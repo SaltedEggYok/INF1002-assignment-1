@@ -1,46 +1,52 @@
 #import dash_core_components as dashCoreComp
 #import dash_html_components as dashHTMLComp
 from dash.dependencies import Input, Output, State
-import dash_bootstrap_components as dashBootComp
-
-from dash import html as dashHTMLComp
-from dash import dcc as dashCoreComp
-#from dash import
+import dash_bootstrap_components as dbc
+from dash import Dash, html, dcc
 
 from app import server
 from app import app
 # put filenames here
-from apps import MainPage
+from apps import MainPage, VaccineRate
 
-dropdown = dashBootComp.DropdownMenu(
+dropdown = dbc.DropdownMenu(
     children=[
-        dashBootComp.DropdownMenuItem("Home", href="/MainPage")
+        dbc.DropdownMenuItem("Dummy", href="/MainPage"),
+        dbc.DropdownMenuItem("Vaccine Rate", href="/VaccineRate")
     ],
     nav = True,
     in_navbar = True,
     label = "Explore",
 )
+navButtons = dbc.Nav(
+    children=[
+        dbc.Button("Dummy", color="primary",href="/MainPage", className = "me-1"),
+        dbc.Button("Vaccine Rate", color="primary",href="/VaccineRate",className = "me-1"),
+        #dbc.Button("Primary", color="primary",className = "me-1"),
+    ],
+    #navbar=True
+)
 
-navbar = dashBootComp.Navbar(
-    dashBootComp.Container(
+navbar = dbc.Navbar(
+    dbc.Container(
         [
-            dashHTMLComp.A(
+            html.A(
                 # Use row and col to control vertical alignment of logo / brand
-                dashBootComp.Row(
+                dbc.Row(
                     [
-                        dashBootComp.Col(dashHTMLComp.Img(src="/assets/virus.png", height="30px")),
-                        dashBootComp.Col(dashBootComp.NavbarBrand("COVID-19 DASH", className="ml-2")),
+                        #dbc.Col(html.Img(src="/assets/virus.png", height="30px")), #remove this / replace this
+                        dbc.Col(dbc.NavbarBrand("COVID-19 DASH", className="ml-2")),
                     ],
                     align="center",
-                    #no_gutters=True,
+                    #no_gutters=True, #useless
                 ),
                 href="/home",
             ),
-            dashBootComp.NavbarToggler(id="navbar-toggler2"),
-            dashBootComp.Collapse(
-                dashBootComp.Nav(
+            dbc.NavbarToggler(id="navbar-toggler2"),
+            dbc.Collapse(
+                dbc.Nav(
                     # right align dropdown menu with ml-auto className
-                    [dropdown], className="ml-auto", navbar=True
+                    [navButtons], className="ml-auto", navbar=True
                 ),
                 id="navbar-collapse2",
                 navbar=True,
@@ -53,10 +59,10 @@ navbar = dashBootComp.Navbar(
 )
 
 # embedding the navigation bar
-app.layout = dashHTMLComp.Div([
-    dashCoreComp.Location(id='url', refresh=False),
+app.layout = html.Div([
+    dcc.Location(id='url', refresh=False),
     navbar,
-    dashHTMLComp.Div(id='page-content')
+    html.Div(id='page-content')
 ])
 
 @app.callback(Output('page-content', 'children'),
@@ -64,6 +70,8 @@ app.layout = dashHTMLComp.Div([
 def display_page(pathname):
     if pathname == '/MainPage':
         return MainPage.layout
+    elif pathname == '/VaccineRate':
+        return VaccineRate.layout
     else:
         x = 0
         #return home.layout or whatever is the landing page here

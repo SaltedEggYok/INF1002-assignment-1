@@ -1,0 +1,53 @@
+﻿Feature,Desription
+VAERS_ID,VAERS Identification Number
+SYMPTOM1,Adverse Event MedDRA Term 1
+SYMPTOMVERSION1,MedDRA dictionary version number 1
+SYMPTOM2,Adverse Event MedDRA Term 1
+SYMPTOMVERSION2,MedDRA dictionary version number 2
+SYMPTOM3,Adverse Event MedDRA Term 3
+SYMPTOMVERSION3,MedDRA dictionary version number 3
+SYMPTOM4,Adverse Event MedDRA Term 4
+SYMPTOMVERSION4,MedDRA dictionary version number 4
+SYMPTOM5,Adverse Event MedDRA Term 5
+SYMPTOMVERSION5,MedDRA dictionary version number 5
+VAX_TYPE,Administered Vaccine Type
+VAX_MANU,Vaccine Manufacturer
+VAX_LOT,Manufacturer's Vaccine Lot
+VAX_DOSE_SERIES,Number of doses administered
+VAX_ROUTE,Vaccination Route
+VAX_SITE,Vaccination Site
+VAX_NAME,Vaccination Name
+RECVDATE,Date report was received
+STATE,State
+AGE_YRS,Age in Years
+CAGE_YR,Calculated age of patient in years
+CAGE_MO,Calculated age of patient in months
+SEX,Sex
+RPT_DATE,Date Form Completed
+SYMPTOM_TEXT,Reported symptom text
+DIED,Died
+DATEDIED,Date of Death
+L_THREAT,Life-Threatening Illness
+ER_VISIT,Emergency Room or Doctor Visit
+HOSPITAL,Hospitalized
+HOSPDAYS,Number of days Hospitalized
+X_STAY,Prolongation of Existing Hospitalization
+DISABLE,Disability
+RECOVD,Recovered
+VAX_DATE,Vaccination Date
+ONSET_DATE,Adverse Event Onset Date
+NUMDAYS,Number of days (Onset date - Vax. Date)
+LAB_DATA,Diagnostic laboratory data
+V_ADMINBY,Type of facility where vaccine was administered
+V_FUNDBY,Type of funds used to purchase vaccines
+OTHER_MEDS,Other Medications
+CUR_ILL,Illnesses at time of vaccination
+HISTORY,Chronic or long-standing health conditions
+PRIOR_VAX,Prior Vaccination Event information
+SPLTTYPE,Manufacturer/Immunization Project Report Number
+FORM_VERS,VAERS form version 1 or 2
+TODAYS_DATE,Form Completed
+BIRTH_DEFECT,Congenital anomaly or birth defect
+OFC_VISIT,Doctor or other healthcare provider office/clinic visit
+ER_ED_VISIT,Emergency room/department or urgent care
+ALLERGIES,"Allergies to medications,food, or other products"
