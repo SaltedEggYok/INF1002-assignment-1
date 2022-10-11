@@ -124,7 +124,7 @@ layout = html.Div(children = [
     #top text and graph, init below
     html.Div(id="display-graph"),
 
-    #local navigation buttons
+    #local graph selection, affects the div above this
     html.Div(children=[
         dcc.RadioItems(id="graphChoice",
             options=[
@@ -148,7 +148,6 @@ def swapDisplay(choice):
             figure1.update_traces(textposition = 'outside')
             return html.Div(children = [                
                     html.H1(children = "Top 5 countries with highest rate of vaccination"),
-                    #html.Div(children= '''Dash: A web application framework for your data'''),
                     dcc.Graph(id= 'displayGraph', figure=figure1)
                     ]
                 )
@@ -157,7 +156,6 @@ def swapDisplay(choice):
             figure1.update_traces(textposition = 'outside')
             return html.Div(children = [                
                     html.H1(children = "Top countries with highest rate of full vaccinations"),
-                    #html.Div(children= '''Dash: A web application framework for your data'''),
                     dcc.Graph(id= 'displayGraph', figure=figure1)
                     ]
                 )
@@ -166,7 +164,6 @@ def swapDisplay(choice):
             figure1.update_traces(textposition = 'outside')
             return html.Div(children = [                
                     html.H1(children = "TEMP"),
-                    #html.Div(children= '''Dash: A web application framework for your data'''),
                     dcc.Graph(id= 'displayGraph', figure=figure1)
                     ]
                 )        
@@ -175,7 +172,6 @@ def swapDisplay(choice):
             figure1.update_traces(textposition = 'outside')
             return html.Div(children = [                
                     html.H1(children = "Bottom 5 countries with lowest rate of vaccination"),
-                    #html.Div(children= '''Dash: A web application framework for your data'''),
                     dcc.Graph(id= 'displayGraph', figure=figure1)
                     ]
                 )        
@@ -184,7 +180,6 @@ def swapDisplay(choice):
             figure1.update_traces(textposition = 'outside')
             return html.Div(children = [                
                     html.H1(children = "Bottom countries with lowest rate of full vaccination"),
-                    #html.Div(children= '''Dash: A web application framework for your data'''),
                     dcc.Graph(id= 'displayGraph', figure=figure1)
                     ]
                 )        
@@ -192,28 +187,7 @@ def swapDisplay(choice):
         case _:
             return html.Div(children = [                
                     html.H1(children = "Dead with highest rate of vaccination"),
-                    #html.Div(children= '''Dash: A web application framework for your data'''),
                     dcc.Graph(id= 'displayGraph', figure=figure1)
                     ]
                 ) 
-            
-
-"""    
-    if choice == "TopVaccRate":
-        return html.Div(children = 
-            [                
-            html.H1(children = "Top 5 countries with highest rate of vaccination"),
-            #html.Div(children= '''Dash: A web application framework for your data'''),
-            dcc.Graph(id= 'displayGraph', figure=figure1)
-            ]
-        ) 
-    elif choice == "":
-        return html.Div(children = 
-            [                
-            html.H1(children = "Changed"),
-            #html.Div(children= '''Dash: A web application framework for your data'''),
-            dcc.Graph(id= 'displayGraph', figure=figure1)
-            ]
-        ) 
-       
-"""
+        
