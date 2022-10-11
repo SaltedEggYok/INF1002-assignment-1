@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from tabulate import tabulate
 
 clinics_df = pd.read_csv(r"..\csv\vaccineclinic.csv")
 
@@ -33,12 +34,12 @@ qns = int(input("This is the following datas we can provide for vaccines in sing
 if qns == 1:
     print(clean)
 elif qns == 2:
-    print(child)
+    print(tabulate(tabular_data=child, headers='keys', tablefmt='fancy_grid'))
 elif qns == 3:
-    print(pfz)
+    print(tabulate(tabular_data=pfz, headers='keys', tablefmt='fancy_grid'))
 elif qns == 4:
-    print(snv)
+    print(tabulate(tabular_data=snv, headers='keys', tablefmt='fancy_grid'))
 elif qns == 5:
-    print(nova)
+    print(tabulate(tabular_data=nova, headers='keys', tablefmt='fancy_grid'))
 else:
     print("Please enter a valid number")
