@@ -3,6 +3,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+from dash.dependencies import Input, Output, State
+from dash import Dash, html, dcc
+import dash_bootstrap_components as dbc
+import plotly.express as px
+from app import app
+
 # Read retrenchment industry data
 df = pd.read_csv(r"..\csv\retrench_industry_yearly.csv")
 print("Retrenchment industry data read successfully!")
@@ -147,3 +153,66 @@ elif options == 9:
 
 else:
     print("Please enter a valid number")
+
+
+layout = html.Div(children = [
+    
+    #top text and graph, init below
+    html.Div(id="dispGrphRet"),
+
+    #local graph selection, affects the div above this
+    html.Div(children=[
+        dcc.RadioItems(id="grphChoiceRet",
+            options=[
+                {'label': 'Retrenchment Data by Industry, 2017-2021', 'value':'RetDataInd' },
+                {'label': 'Industry type (Ascending Order)', 'value':'IndTypAsc' },
+                {'label': 'Retrenchment Rate by Industry Type Yearly(only this works for now)', 'value':'RetRateYrly' },
+                {'label': 'Boxplot for Retrenchment Rate', 'value':'BoxRetRate' },
+                {'label': 'Retrenchment Rate by In-depth Industry Type', 'value':'RetRateInDepth' },
+                {'label': 'Bar Chart for Retrenchment Rate by In-depth Industry Type', 'value':'BarChartRetRate' },
+                {'label': 'Bar Chart for Retrenchment Rate by In-depth Industry Type before Covid-19', 'value':'BarChartRetRateBfC19' },
+                {'label': 'Bar Chart for Retrenchment Rate by In-depth Industry Type during Covid-19', 'value':'BarChartRetRateDrC19' },
+                {'label': 'Bar Chart for Retrenchment Rate by In-depth Industry Type for post-recovery period of Covid-19', 'value':'BarChartRetRateAfC19' },
+            ],
+            value = 'RetDataInd',
+            labelStyle={'display':'block'}
+        )
+    ])
+])
+
+@app.callback(Output("dispGrphRet","children"), [[Input('grphChoiceRet','value'),]])
+def swapDisplay(choice):   
+    match choice:
+        case 'RetDataInd':
+            x = 0
+        case 'IndTypAsc':
+            x = 0
+        case 'RetRateYrly':
+            #df6 = df5.groupby(['year', 'industry1'])['retrench'].agg('sum').plot.bar(color=['lightsalmon', 'lightblue', 'plum'])
+            #df6 = df5.groupby(['year', 'industry1'])['retrench'].agg('sum')#.plot.bar(color=['lightsalmon', 'lightblue', 'plum'])
+            retRate2017to2021 = df5.sort_values('year')
+            fig1 = px.bar(retRate2017to2021,  x='industry1', y='retrench', barmode='group', color='industry1', facet_col='year',
+                        category_orders={ 'industry1': ['construction','manufacturing','services'],
+                                        #'year': ['2017','2018','2019','2020','2021']
+                                        },
+                        labels=dict(industry1 = 'Industries', retrench = 'Number of Workers Retrenched', construction='Construction')
+                        )
+            return html.Div(children = [                
+                    html.H1(children = "Yearly Retrenchment Rate"),
+                    dcc.Graph(figure=fig1)])        
+        case 'BoxRetRate':
+            x = 0
+        case 'RetRateInDepth':
+            x = 0
+        case 'BarChartRetRate':
+            x = 0
+        case 'BarChartRetRateBfC19':
+            x = 0
+        case 'BarChartRetRateDrC19':
+            x = 0
+        case 'BarChartRetRateAfC19':
+            x = 0
+        case _:
+            return html.Div(children = [                
+                    html.H1(children = "Dead with highest rate of vaccination"),
+                    dcc.Graph(id= 'displayGraph', figure=fig1)]) 
