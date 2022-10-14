@@ -1,4 +1,23 @@
 name,address,vaccine
+HeartlandHealth (Redhill Close),"86 Redhill Close #01-600, Singapore 150086",Pfizer /Comirnaty (Children aged 5 to 11 years)
+HeartlandHealth (Tampines),"730 Tampines Street 71 #01-51, Singapore 520730",Pfizer /Comirnaty (Children aged 5 to 11 years)
+ASPEN Clinic,"283 Bishan Street 22 #01-185, Singapore 570283",Pfizer /Comirnaty (Children aged 5 to 11 years)
+Raffles Medical (Tampines 1),"10 Tampines Central 1, Tampines 1 #03-28, Singapore 529536",Pfizer /Comirnaty (Children aged 5 to 11 years)
+Raffles Medical (Waterway point),"83 Punggol Central, Waterway Point #02-29, Singapore 828761",Pfizer /Comirnaty (Children aged 5 to 11 years)
+DR+ Medical Paincare Clinic,"988 Upper Serangoon Road, Stars of Kovan #01-07, Singapore 534733",Pfizer /Comirnaty (Children aged 5 to 11 years)
+Potong Pasir Medical Clinic,"148 Potong Pasir Avenue 1, #01-55, Singapore 350148",Pfizer /Comirnaty (Children aged 5 to 11 years)
+HeartlandHealth (Circuit Road),"88 Circuit Road, #01-965, Singapore 370088",Pfizer /Comirnaty (Children aged 5 to 11 years)
+Trucare Medical Clinic And Surgery (Hougang Central),"1187 Upper Serangoon Rd, The Midtown #01-53, Singapore 533971",Pfizer /Comirnaty (Adults & Children aged 5 to 11 years)
+Raffles Medical Clinic Compass One,"1 Sengkang Square #04-09, Compass Mall One, Singapore 545078",Pfizer /Comirnaty (Adults & Children aged 5 to 11 years)
+Admiralty Family Medical Clinic,"693 Woodlands Avenue 6 #01-08, Singapore 730693",Pfizer /Comirnaty (Adults & Children aged 5 to 11 years)
+Our Family Physician Clinic & Surgery,"829 Tampines Street 81, #01-292, Singapore 520829",Pfizer /Comirnaty (Adults & Children aged 5 to 11 years)
+Eastern Medical Centre,"631 Bedok Reservoir Road #01-896, Singapore 470631",Pfizer /Comirnaty (Adults & Children aged 5 to 11 years)
+Trucare Medical and Surgery (Havelock),"51 Havelock Road #01-04, Singapore 161051",Pfizer /Comirnaty (Adults & Children aged 5 to 11 years)
+1 Bishan Medical Clinic,"283 Bishan Street 22, #01-191, Singapore 570283",Pfizer /Comirnaty (Adults & Children aged 5 to 11 years)
+Martin Medical Centre,"111 Woodlands Street 13 #01-80, Singapore 730111",Pfizer /Comirnaty (Children aged 5 to 11 years)
+Northeast Medical Group (Bukit Batok),"10 Bukit Batok Central, Bukit Batok MRT Station, #01-01, Singapore 659958",Pfizer /Comirnaty (Children aged 5 to 11 years)
+Northeast Medical Group (Ghim Moh),"25 Ghim Moh Link, #01-10, Singapore 270025",Pfizer /Comirnaty (Children aged 5 to 11 years)
+Well Family Clinic & Surgery,"555 Ang Mo Kio Avenue 10, #01-1948, Singapore 560555",Pfizer /Comirnaty (Children aged 5 to 11 years)
 Raffles Medical Clinic Holland Village,"118 Holland Avenue #05-02/03/04, Singapore 278997",Pfizer /Comirnaty
 Mei Ling Clinic,"158 Mei Ling Street #01-80, Singapore 140158",Pfizer /Comirnaty
 Family Medicine Clinic Chinatown,"133 New Bridge Road #02-09, Singapore 059413",Pfizer /Comirnaty
@@ -11,8 +30,7 @@ Raffles Medical Clinic Raffles Hospital,"585 North Bridge Road Level 2 Raffles H
 The Tenteram Clinic,"116B Jalan Tenteram #01-549, Singapore 322116",Pfizer /Comirnaty
 Trucare Medical & Surgery (AMK),"226A Ang Mo Kio Avenue 1 #01-631 Kebun Baru Mall, Singapore 561226",Pfizer /Comirnaty
 Fraser Medical Centre,"78A Telok Blangah Street 32 #01-07, Singapore 101078",Pfizer /Comirnaty
-Assurance Medicine Clinic & Surgery,"370 Tanjong Katong Road, Singapore 437127",Pfizer /Comirnaty
-1 Bishan Medical Clinic,"283 Bishan Street 22, #01-191, Singapore 570283",Pfizer /Comirnaty(Adults & Children)
+Assurance Medicare Clinic & Surgery,"370 Tanjong Katong Road, Singapore 437127",Pfizer /Comirnaty
 Healthify Medical Family Clinic,"262 Balestier Road, OKIO #01-04, Singapore 329714",Pfizer /Comirnaty
 Northeast Medical Group,"22 Malacca Street, RB Capital Building #13-03, Singapore 048980",Pfizer /Comirnaty
 Marine Parade Clinic,"59 Marine Terrace #01-81, Singapore 440059",Pfizer /Comirnaty
@@ -37,7 +55,6 @@ Newcastle Clinic,"541 Orchard Road, Liat Towers #14-02, Singapore 238881",Pfizer
 The Medical Clinic Pte. Ltd.,"63 Chulia Street, OCBC Centre East #01-02, Singapore 049514",Pfizer /Comirnaty
 Ko Family Clinic,"18 Upper Boon Keng Road #01-1133, Singapore 380018",Pfizer /Comirnaty
 Parklane Medical Centre,"35 Selegie Road, Parklane Shopping Mall #02-25A, Singapore 188307",Pfizer /Comirnaty
-Trucare Medical and Surgery (Havelock),"51 Havelock Road #01-04, Singapore 161051",Pfizer /Comirnaty(Adults & Children)
 King George's Medical Clinic,"803 King George's Avenue #01-144, Singapore 200803",Pfizer /Comirnaty
 FAITH Clinic (Toa Payoh),"211 Lorong 8 Toa Payoh #01-19, Singapore 310211",Pfizer /Comirnaty
 Arcadia Clinic,"2 Pandan Valley #01-211, Singapore 597626",Pfizer /Comirnaty
@@ -49,15 +66,12 @@ Dr Gary's Family Clinic,"77 Indus Road #01-519, Singapore 160077",Pfizer /Comirn
 Family Health Clinic & Surgery,"2 Balestier Road #01-651, Singapore 320002",Pfizer /Comirnaty
 Healthsprings Medical & Laser Clinic (Bidadari/Woodleigh),"105A Bidadari Park Drive #01-09, Singapore 341105",Pfizer /Comirnaty
 Healthsprings Medical Clinic (Liat Towers),"541 Orchard Road, Liat Towers #10-02, Singapore 238881",Pfizer /Comirnaty
-Potong Pasir Medical Clinic,"148 Potong Pasir Avnuee 1, #01-55, Singapore 350148",Pfizer /Comirnaty (Children)
-HeartlandHealth (Circuit Road),"88 Circuit Road, #01-965, Singapore 370088",Pfizer /Comirnaty (Children)
 Integrated Wellness Clinic,"8 Sinaran Drive, Specialist Center #05-04, Singapore 307470",Sinovac
 Central Medical Group Pte Ltd,11 Jalan Bukit Merah #01-4442 Singapore 150011,Sinovac
 Precious Medical Centre Pte Ltd,"290 Orchard Road, The Paragon #12-01, Singapore 238859",Sinovac
 Our Woodleigh Family Clinic,"115B Alkaff Crescent #01-05, Singapore 342115",Sinovac
 Shenton Medical Group (Toh Yi),"18 Toh Yi Drive #01-103 , Singapore 590018",Sinovac
 Marina Medical Centre (Tiong Bahru),"78 Guan Chuan Street #01-39, Singapore 160078",Sinovac
-iCare Medical and Wellness Clinic,"22 Havelock Road #01-701, Singapore 160022",Sinovac
 Providence Clinic @ Novena,"1 Goldhill Plaza #01-29, Singapore 308899",Sinovac
 A Life Clinic Pte Ltd,"10 Sinaran Drive, Novena Medical Center #09-21, Singapore 307506",Sinovac
 Lim Clinic & Surgery,"109 Lorong 1 Toa Payoh, #01-312, Singapore 310109",Sinovac
@@ -89,11 +103,9 @@ Dayspring Medical Clinic (Tampines),"2 Tampines Central 5 #04-09 Century Square,
 SATA CommHealth Bedok Medical Centre,"351 Chai Chee Street, SATA CommHealth Building, Singapore 468982",Pfizer /Comirnaty
 Faith Medical Clinic & Surgery,"487C Tampines Street 45, #B1-103, Singapore 522487",Pfizer /Comirnaty
 Karri Family Clinic,"866A Tampines Street 83, Tampines Central Community Complex #03-05, Singapore 521866",Pfizer /Comirnaty
-Eastern Medical Centre,"631 Bedok Reservoir Road #01-896, Singapore 470631",Pfizer /Comirnaty(Adults & Children)
 Bedok Clinic & Sugery (Family Medical Centre),"17 Bedok South Road, #1-565 Singapore 460017",Pfizer /Comirnaty
 Edgedale Medical Clinic (Tampines),"614 Tampines North Drive 1, #01-01, Singapore 520614",Pfizer /Comirnaty
 Kindred Family Clinic (Tampines),"494 Tampines Street 45, #01-02, Singapore 523494",Pfizer /Comirnaty
-Our Family Physician Clinic & Surgery,"829 Tampines Street 81, #01-292, Singapore 520829",Pfizer /Comirnaty(Adults & Children)
 ProHealth Medical Group@Tampines,"610 Tampines North Drive 1, Tampines GreenWeave #01-03, Singapore 520610",Pfizer /Comirnaty
 SM Haneefa Clinic,"11 Chai Chee Road, #01-23, Singapore 460011",Pfizer /Comirnaty
 Tampines Family Medicine Clinic,"1 Tampines Walk, Our Tampines Hub, #03-34, Singapore 528523",Pfizer /Comirnaty
@@ -106,7 +118,6 @@ Viva Medical Clinic,"450A Tampines Street 42, #01-356, Singapore 521450",Pfizer 
 Yoong Family Clinic & Surgery,"333 Tampines Street 32, #01-536, Singapore 520333",Pfizer /Comirnaty
 Pasir Ris Clinic & Surgery Pte Ltd,"442 Pasir Ris Drive 6 #01-28, Singapore 510442",Pfizer /Comirnaty
 FAITH Clinic (Simei),"139 Simei Street 1 #01-10, Singapore 520139",Pfizer /Comirnaty
-Raffles Medical (Tampines 1),"10 Tampines Central 1, Tampines 1 #03-28, Singapore 529536",Pfizer /Comirnaty (Children)
 Little Cross Family Clinic,"929 Tampines Street 91 #01-445, Singapore 520929",Sinovac
 Kai Medical Clinic,"5 Tampines Street 32, Tampines Mart #02-05, Singapore 529284",Sinovac
 FAITH Family Clinic,"57 Marine Terrance, #01-113, Singapore 440057",Sinovac
@@ -123,7 +134,6 @@ Parkway Shenton Medical Group (Yishun),"598 Yishun Ring Road #B1-09, Singapore 7
 SATA CommHealth Woodlands Medical Centre,"900 South Woodlands Drive #04-01 Civic Centre, Singapore 730900",Pfizer /Comirnaty
 Frontier Medical Associates,"899C, Woodlands Drive 50 #01-296, Singapore 732899",Pfizer /Comirnaty
 Royal Care Medical Clinic Yishun Junction 9,"317 Yishun Avenue 9, HDB Multi-Storey Carpark #01-03, Singapore 760317",Pfizer /Comirnaty
-Admiralty Family Medical Clinic,"693 Woodlands Avenue 6 #01-08, Singapore 730693",Pfizer /Comirnaty(Adults & Children)
 United Health Family Clinic & Surgery,"627 Yishun Street 61 #01-63, Singapore 760627",Pfizer /Comirnaty
 FAITH Clinic (Yishun),"598 Yishun Ring Road, Wisteria Mall #01-11, Singapore 768698",Pfizer /Comirnaty
 T Medical Clinic (Canberra),"115 Canberra Walk #01-05, Singapore 750115",Pfizer /Comirnaty
@@ -132,10 +142,8 @@ BestMed Family Clinic & Homecare,"126 Canberra Street, Multistorey Park, #01-04,
 Central 24-HR Clinic (Yishun),"701A Yishun Ave 5, #01-04, Singapore 761701",Sinovac
 Central 24-HR Clinic (Woodlands),"768 Woodlands Avenue 6, #02-06A, Singapore 730768",Sinovac
 Norwood Medical Clinic,"785E Woodlands Rise #01-02, Singapore 735785",Novavax
-Kenneth Tan Medical Clinic,"658 Punggol East #01-04, Singapore 820658",Pfizer /Comirnaty(Adults & Children)
 Etern Medical Clinic,"70 Pungol Centre (Punggol MRT Station), #01-05, Singapore 828868",Pfizer /Comirnaty
 Northeast Medical Group (Sengkang),"5 Sengkang Square, Singapore 545062",Pfizer /Comirnaty
-Raffles Medical Clinic Compass One,"1 Sengkang Square #04-09, Compass Mall One, Singapore 545078",Pfizer /Comirnaty(Adults & Children)
 Mission Medical Clinic,780 Upper Serangoon Road #01-01 Singapore 534649,Pfizer /Comirnaty
 Shenton Medical Group (Buangkok),"10 Sengkang Central, #01-04 Buangkok NEL MRT Station, Singapore 545061",Pfizer /Comirnaty
 Pancare Medical Clinic,"133 Ang Mo Kio Avenue 3 #01-1643, Singapore 560133",Pfizer /Comirnaty
@@ -154,7 +162,6 @@ Etern Medical Clinic (Punggol Sumang LRT),"308C Punggol Walk #01-302, 1 Waterway
 Frontier Medical Associates,"163 Ang Mo Kio Avenue 4, #01-426, Singapore 560163",Pfizer /Comirnaty
 Medi Healthcare Clinic (Punggol),"218 Sumang Walk #01-02, Singapore 820218",Pfizer /Comirnaty
 Healthpath Medical Clinic & Surgery,"338 Ang Mo Kio Ave 1, #01-1651, Singapore 560338",Pfizer /Comirnaty
-Trucare Medical Clinic And Surgery (Hougang Central),"1187 Upper Serangoon Rd, The Midtown #01-53, Singapore 533971",Pfizer /Comirnaty(Adults & Children)
 Lifeline Punggol Medical Clinic Pte. Ltd.,"198 Punggol Field #02-03, Singapore 820198",Pfizer /Comirnaty
 OneDoctors Family Clinic (Punggol),"83 Punggol Central, Waterway Point #02-17, Singapore 828761",Pfizer /Comirnaty
 Frontier Medical Associates @ Buangkok,"982 Buangkok Crescent #01-03, Singapore 530982",Pfizer /Comirnaty
@@ -168,8 +175,6 @@ Island Family Clinic (Seletar),"455 Sengkang West Avenue #01-14, Singapore 79045
 Punggol Family Clinic Pte Ltd,"322 Sumang Walk #01-03, Singapore 820322",Pfizer /Comirnaty
 Affinity Medical Clinic,"253 Serangoon Central Drive #01-187, Singapore 550253",Pfizer /Comirnaty
 ProHealth Medical Group@Hougang,"476D Upper Serangoon View #02-04, Singapore 537476",Pfizer /Comirnaty
-Raffles Medical (Waterway point),"83 Punggol Central, Waterway Point #02-29, Singapore 828761",Pfizer /Comirnaty (children)
-DR+ Medical Paincare Clinic,"988 Upper Serangoon Road, Stars of Kovan #01-07, Singapore 534733",Pfizer /Comirnaty (Children)
 SATA CommHealth Ang Mo Kio Medical Centre,715 Ang Mo Kio Avenue 6 #01-4008 & 4010 Singapore 560715,Sinovac
 Lifeline Medical Group,"118 Rivervale Drive, Rivervale Plaza # #02-18, Singapore 540118",Sinovac
 Edgedale Medical Clinic,"122A Edgedale Plains, #01-187, Singapore 821122",Sinovac
@@ -215,6 +220,3 @@ HeartlandHealth (Bukit Batok),"164 Bukit Batok Street 11 #01-152, Singapore 6501
 Loh & Loh Clinic & Surgery,"501 West Coast Drive #01-284, Singapore 120501 (Call 65303680 for enquires)",Novavax
 OneCare Medical Clinic Clementi,"449 Clementi Avenue 3 #01-241, 120449",Novavax
 My Family Clinic (Segar),"485 Segar Road #01-508, Singapore 670485",Novavax
-HeartlandHealth (Redhill Close),"86 Redhill Close #01-600, Singapore 150086",Pfizer /Comirnaty (Children)
-HeartlandHealth (Tampines),"730 Tampines Street 71 #01-51, Singapore 520730",Pfizer /Comirnaty (Children)
-ASPEN Clinic,"283 Bishan Street 22 #01-185, Singapore 570283",Pfizer /Comirnaty (Children)
