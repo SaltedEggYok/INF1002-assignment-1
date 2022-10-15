@@ -7,7 +7,7 @@ from dash import Dash, html, dcc
 from app import server
 from app import app
 # put filenames here
-from apps import MainPage, VaccineRate
+from apps import MainPage, VaccineRate, VaccineClinic
 import retrenchmentbyindustrytype
 
 dropdown = dbc.DropdownMenu(
@@ -23,6 +23,7 @@ navButtons = dbc.Nav(
     children=[
         dbc.Button("Dummy", color="primary",href="/MainPage", className = "me-1"),
         dbc.Button("Vaccine Rates", color="primary",href="/VaccineRates",className = "me-1"),
+        dbc.Button("Vaccine Clinics", color="primary",href="/VaccineClinics",className = "me-1"),
         dbc.Button("Retrenchment Rates", color="primary",href="/RetrenchmentRates",className = "me-1"),
         #dbc.Button("Primary", color="primary",className = "me-1"),
     ],
@@ -74,6 +75,8 @@ def display_page(pathname):
         return MainPage.layout
     elif pathname == '/VaccineRates':
         return VaccineRate.layout
+    elif pathname == '/VaccineClinics':
+        return VaccineClinic.layout
     elif pathname == '/RetrenchmentRates':
         return retrenchmentbyindustrytype.layout
     else:

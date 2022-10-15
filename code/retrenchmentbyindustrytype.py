@@ -87,6 +87,7 @@ df14 = df5.loc[df5['year']==2021][['year', 'industry3', 'retrench']]
 
 df5["industry3"].nunique()
 
+""" #add a "#" to the front of this line to remove the block comment
 # Asking users for input
 options = int(input("Select one of the following options:"
                 "\n1) Display retrenchment data by industry type from 2017-2021"
@@ -153,7 +154,7 @@ elif options == 9:
 
 else:
     print("Please enter a valid number")
-
+#"""
 
 layout = html.Div(children = [
     
