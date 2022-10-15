@@ -70,10 +70,10 @@ layout = html.Div(children = [
         dcc.RadioItems(id="display-choice",
             options=[
                 {'label': 'Vaccines Provided in Singapore', 'value':'vaxInSG' },
-                {'label': 'Available Locations for Children', 'value':'locForChildren' },
-                {'label': 'Available Locations for Pfizer/Comirnaty', 'value':'locPfizerComirnaty'},
-                {'label': 'Available Locations for Sinovac', 'value':'locSinovac' },
-                {'label': 'Available Locations for Novavax', 'value':'locNovavax' },
+                {'label': 'Available Vaccination Locations for Children', 'value':'locForChildren' },
+                {'label': 'Available Vaccination Locations with Pfizer/Comirnaty', 'value':'locPfizerComirnaty'},
+                {'label': 'Available Vaccination Locations with Sinovac', 'value':'locSinovac' },
+                {'label': 'Available Vaccination Locations with Novavax', 'value':'locNovavax' },
             ],
             value = 'vaxInSG',
             labelStyle={'display':'block'}
