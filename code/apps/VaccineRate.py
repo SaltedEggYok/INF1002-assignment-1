@@ -126,7 +126,7 @@ layout = html.Div(children = [
 
     #local graph selection, affects the div above this
     html.Div(children=[
-        dcc.RadioItems(id="graphChoice",
+        dcc.RadioItems(id="graph-choice",
             options=[
                 {'label': 'Highest Vaccinated Rate', 'value':'HVR' },
                 {'label': 'Highest Fully Vaccinated Rate', 'value':'HFVR' },
@@ -140,7 +140,7 @@ layout = html.Div(children = [
     ])
 ])
 
-@app.callback(Output("display-graph","children"), [[Input('graphChoice','value'),]])
+@app.callback(Output("display-graph","children"), [[Input('graph-choice','value'),]])
 def swapDisplay(choice):   
     match choice:
         case 'HVR':

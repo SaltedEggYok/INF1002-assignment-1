@@ -8,7 +8,7 @@ Original file is located at
 
 # **Project: COVID-19 Analyzer on Retrenchment**
 ```
-Aim: Give users better insight of the COVID-19 situation on the retrenchment rate to help them make informed decisions
+Aim: Give users better insight of    the COVID-19 situation on the retrenchment rate to help them make informed decisions
 ```
 
 
@@ -26,8 +26,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+from dash import Dash, html, dcc, Input, Output, State, dash_table
+import dash_bootstrap_components as dbc
+import plotly.express as px
+from app import app #not a library, a local file
+
 # Read COVID-19 dataset
-data=pd.read_excel(r"data - 2022-10-14T073337.284.xlsx",sheet_name="transformed data")
+data=pd.read_excel("../csv/data-2022-10-14T073337-284.xlsx",sheet_name="transformed_data")
 
 """The dataset reveals the effects of the global economy on Singapore during the pandemic.
 
@@ -121,7 +126,7 @@ Therefore, STI seems to be a good variable to use for my retrenchment visualizat
 
 fig, ax = plt.subplots(figsize = (15, 6))
 
-sns.lineplot(data["month"], data["STI"], hue = data["day"], palette = "magma_r")
+sns.lineplot(data, x= "month", y ="STI", hue = data["day"], palette = "magma_r")
 
 ax.set_title("Seasonal STI")
 ax.set_xlabel("day")
@@ -170,7 +175,7 @@ Therefore, GDPCAP is not a good variable to use for my retrenchment visualizatio
 
 fig, ax = plt.subplots(figsize = (15, 6))
 
-sns.lineplot(data["month"], data["GDPCAP"], hue = data["day"], palette = "magma_r")
+sns.lineplot(data, x="month",y="GDPCAP", hue = data["day"], palette = "magma_r")
 
 ax.set_title("Seasonal GDPCAP")
 ax.set_xlabel("day")
@@ -200,7 +205,7 @@ for s in ['top', 'right']:
 
 ax.grid()
 
-plt.show()
+#plt.show()
 
 """### 3.5 TD (Total Deaths)
 
@@ -245,7 +250,7 @@ g = sns.lineplot(x=rmean.index, y='TD',
                  data=rmean, label="Rolling Mean 12 Months")
 
 plt.legend(fontsize='xx-large')
-plt.show()
+#plt.show()
 
 built_TD = data['TD'].value_counts().sort_index()
 fig, ax = plt.subplots(1, 1, figsize=(18, 5))
@@ -257,7 +262,7 @@ for s in ['top', 'right']:
 
 ax.grid()
 
-plt.show()
+#plt.show()
 
 """Now, to take a look at my overall COVID-19 dataset for further visualizations"""
 
@@ -323,7 +328,7 @@ I will first go ahead and read in the retrenchment dataset
 
 # Read retrenchment dataset
 import os
-df_industry= pd.read_csv(r"retrench_industry_yearly.csv")
+df_industry= pd.read_csv("../csv/retrench_industry_yearly.csv")
 
 print(dfyearnumerical.head())
 
@@ -360,16 +365,21 @@ Infer: COVID-19 has caused a huge impact on the retrenchment rate
 
 
 """
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 
+#that huge bar graph
+finalindustry = finalindustry[finalindustry.retrench != '-'] #quick fix pt 2?
+finalindustry['retrench'] = finalindustry['retrench'].astype('int') #quick fix?
 # Bar plot of retrenchment rate over the years by industry type
 plt.rcParams['figure.figsize']=(17,7)
 sns.set(style="whitegrid")
 chart=sns.barplot(data=finalindustry, x="industry3", y="retrench", hue="year", palette="pastel")
 chart.set_xticklabels(chart.get_xticklabels(), rotation=45, horizontalalignment='right')
 
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
-
+fig_retrenchment = px.line(finalindustry,  x='year', y='retrench', color='industry3', #facet_col='year',
+            labels=dict(industry1 = 'Industries', retrench = 'Number of Workers Retrenched', construction='Construction')
+            )
 
 fig = go.Figure()
 
@@ -382,6 +392,7 @@ fig.update_layout(
 
 colors = ["#2A66DE", "#FFC32B","#d4c2b6","#b5829b"]
 print(finalindustry.industry1.unique())
+figureArray = []
 for r, c in zip(finalindustry.industry1.unique(), colors):
     print(r)
     plot_df = finalindustry[finalindustry.industry1 ==r]
@@ -397,7 +408,8 @@ for r, c in zip(finalindustry.industry1.unique(), colors):
     fig.add_trace(
         go.Scatter(x=[plot_df.year, plot_df.industry1], y=plot_df[('STI', 'sum')], name="STI"),
         secondary_y=True,)
-    fig.show()
+    figureArray.append(fig)
+#    fig.show()
 
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
@@ -429,4 +441,120 @@ for r, c in zip(finalindustry.industry2.unique(), colors):
     fig.add_trace(
         go.Scatter(x=[plot_df.year, plot_df.industry2], y=plot_df[('STI', 'sum')], name="STI"),
         secondary_y=True,)
-    fig.show()
+    figureArray.append(fig)
+#    fig.show()
+
+
+layout = html.Div(children=[
+    html.P("COVID-19 Analyzer on Retrenchment"),
+    html.P("Aim: Give user better insight of the COVID-19 situation"),
+
+    html.P(children=["From the data gathered, users can use the tool to:" , html.Br(),
+            "1. Educate themselves on the potential job stability during the pandemic" , html.Br(),
+            "2. Help them decide what potential jobs they can look for during the pandemic"]),
+
+    html.P(children=["# 1. Read the dataset" , html.Br(),
+            "I will first go ahead and read in the COVID-19 dataset"]),
+    html.P(children=["The dataset reveals the effects of the global economy on Singapore during the pandemic.", html.Br(),
+            "The following columns are:", html.Br(),
+            "1. CODE", html.Br(),
+            "2. COUNTRY", html.Br(),
+            "3. DATE", html.Br(),
+            "4. HDI (Human Development Index)", html.Br(),
+            "5. TC (Total Cases)", html.Br(),
+            "6. TD (Total Deaths)", html.Br(),
+            "7. STI (Strigency Index)", html.Br(),
+            "8. POP (Population)", html.Br(),
+            "9. GDPCAP ($)"]),
+    #insert print(data.columns)
+    html.P(children=["# 2. Clean the dataset", html.Br(),
+            "Firstly, I would like to filter the country columns by selecting Singapore", html.Br(),
+            "Next, I would like to convert the data type of the Date column to Date type", html.Br(),
+            "Followed by filling up the missing values with average values", html.Br(),
+            "Finally, I would like to segregate the date to day, month and year in order to merge with the retrenchment dataset later on"]),
+    html.P(children=["# 3. Explore the dataset", html.Br(),
+            "I am now going to explore the HDI variable in my dataset", html.Br(),
+            "3.1 HDI (Human Development Index)", html.Br(),
+            "It measures the country's average achievement in terms of health, knowledge and standard of living", html.Br(),
+            "*Reference :http://hdr.undp.org/en/content/human-development-index-hdi*", html.Br(),
+            "Aim: Identify if HDI has an impact on Singapore's economy during the pandemic", html.Br(),
+            "Results: There is no indication that HDI is being affected by COVID-19 as the rate is normal since there is no variation in the data values", html.Br(),
+            "Therefore, HDI is not a good variable to use for my retrenchment visualizations later on"]),
+    #show figure
+    html.P(children=["Next, I am going to explore the STI variable in my dataset", html.Br(),
+            "3.2 STI (Strigency Index)", html.Br(),
+            "It is a government response tracker that measures the containment policies such as school and workplace closures, stay-at-home policies, etc.", html.Br(),
+            "*Reference : https://www.civilsdaily.com/news/what-is-stringency-index/*", html.Br(),
+            "Assume: Affects the retrenchment rate in Singapore due to the closures which will cause many people to lose their jobs in various industries", html.Br(),
+            "Aim: To see how STI is performing everyday during COVID-19", html.Br(),
+            "Results: There is a pattern across the whole month (1-30days) for 2 years", html.Br(),
+            "Therefore, STI seems to be a good variable to use for my retrenchment visualizations later on"]),
+    
+    html.P(children=["I did a distributional plot to have a clearer view of my insights", html.Br(),
+            "Results: STI seems to be high for the past 2 years where a lot of them falls along 3.8", html.Br(),
+            "The distributional plot is skewed towards the right which tells me that COVID-19 has an impact on Singapore's STI"]),
+#show STI figure
+ 
+    html.P(children=["3.3 GDPCAP", html.Br(),
+            "It measures the country's economic activity *(↑ GDPCAP = ↓ population)*", html.Br(),
+            "Once you do the math, the wealth is spread among fewer people, which raises a country's GDP", html.Br(),
+            "*Reference : https://www.thebalance.com/gdp-per-capita-formula-u-s-compared-to-highest-and-lowest-3305848*", html.Br(),
+            "Aim: Tell me how prosperous a country feels to each of its citizens by measuring the country's standard of living through GDPCAP", html.Br(),
+            "Results: There is no indication that GDPCAP is being affected by COVID-19 as the rate is normal since there is no variation in the data values", html.Br(),
+            "Therefore, GDPCAP is not a good variable to use for my retrenchment visualizations later on"]),
+    html.P(children=["3.4 TC (Total Cases)", html.Br(),
+            "Assume: Affects the retrenchment rate in Singapore due to the number of COVID-19 cases which will cause many people to WFH ", html.Br(),
+            "However, some industries do not have WFH policies where retrenchment will jump into the picture", html.Br(),
+            "I plotted a time-series plot to view the number of COVID-19 cases in Singapore"]),
+            #show total cases graph
+    html.P(children=["3.5 TD (Total Deaths)", html.Br(),
+            "I do not see any logic between total deaths and retrenchment rate"]),
+    html.P(children=["Inspecting time series and rolling mean", html.Br(),
+            "Rolling means (moving averages) are generally used to smooth out short-term fluctuations in time series data and highlight long-term trends"]),
+            #show rolling graph here line 253 and 265?
+    html.P(children=["Now, to take a look at my overall COVID-19 dataset for further visualizations"]),
+    html.P(children=["Results:" , html.Br(),
+            "1. Noticed that HDI and GDPCAP are constant", html.Br(),
+            "2. Noticed that there is some pattern going on in TD, TC and STI", html.Br(),
+            "In this case, I have decided to use `TC` and `STI` as my indicator for my retrenchment visualizations**"]),
+    html.P(children=["# 4. Grouping all datasets together", html.Br(),
+            "The COVID-19's date column is in day type while the retrenchment dataset is in year type", html.Br(),
+            "Thus, due to the mismatched of the granularity data, I have decided to standardize the date type to yearly in order to merge the datasets later on"]),
+    html.P(children=["# 4. Final Dataset",html.Br(),
+            "I will first go ahead and read in the retrenchment dataset",html.Br(),
+            "I decided to plot a bar chart to take a look at the retrenchment rate over the years by industry type",html.Br(),
+            "Results: 2020 seems to have the highest number of retrenchment rate in various industries over the last 4 years",html.Br(),
+            "Infer: COVID-19 has caused a huge impact on the retrenchment rate"]),
+            #show final graphs
+    html.Div(children=[
+        dcc.Graph(figure = fig_retrenchment),
+        dcc.Graph(figure = figureArray[0]),
+        dcc.Graph(figure = figureArray[1]),
+        dcc.Graph(figure = figureArray[2]),
+        dcc.Graph(figure = figureArray[3]),
+        dcc.Graph(figure = figureArray[4]),
+        dcc.Graph(figure = figureArray[5]),
+        dcc.Graph(figure = figureArray[6]),
+        dcc.Graph(figure = figureArray[7]),
+        dcc.Graph(figure = figureArray[8]),
+        dcc.Graph(figure = figureArray[9]),
+        dcc.Graph(figure = figureArray[10]),
+        dcc.Graph(figure = figureArray[11]),
+        dcc.Graph(figure = figureArray[12]),
+        dcc.Graph(figure = figureArray[13]),
+        dcc.Graph(figure = figureArray[14]),
+        dcc.Graph(figure = figureArray[15]),
+        dcc.Graph(figure = figureArray[16]),
+        dcc.Graph(figure = figureArray[17]),
+        dcc.Graph(figure = figureArray[18]),
+        dcc.Graph(figure = figureArray[19]),
+        dcc.Graph(figure = figureArray[20]),
+        dcc.Graph(figure = figureArray[21]),
+\
+    ])
+])
+
+@app.callback(Output('asassdf', 'children'),
+[Input('asdf','pathname')])
+def lmao(what):
+    x= 0

@@ -8,7 +8,8 @@ from app import server
 from app import app
 # put filenames here
 from apps import MainPage, VaccineRate, VaccineClinic
-import retrenchmentbyindustrytype
+import covid_19_retrenchment_analysis
+
 
 dropdown = dbc.DropdownMenu(
     children=[
@@ -24,7 +25,7 @@ navButtons = dbc.Nav(
         dbc.Button("Dummy", color="primary",href="/MainPage", className = "me-1"),
         dbc.Button("Vaccine Rates", color="primary",href="/VaccineRates",className = "me-1"),
         dbc.Button("Vaccine Clinics", color="primary",href="/VaccineClinics",className = "me-1"),
-        dbc.Button("Retrenchment Rates", color="primary",href="/RetrenchmentRates",className = "me-1"),
+        dbc.Button("Retrenchment Analysis", color="primary",href="/RetrenchmentAnalysis",className = "me-1"),
         #dbc.Button("Primary", color="primary",className = "me-1"),
     ],
     #navbar=True
@@ -77,8 +78,8 @@ def display_page(pathname):
         return VaccineRate.layout
     elif pathname == '/VaccineClinics':
         return VaccineClinic.layout
-    elif pathname == '/RetrenchmentRates':
-        return retrenchmentbyindustrytype.layout
+    elif pathname == '/RetrenchmentAnalysis':
+        return covid_19_retrenchment_analysis.layout
     else:
         x = 0
         #return home.layout or whatever is the landing page here
