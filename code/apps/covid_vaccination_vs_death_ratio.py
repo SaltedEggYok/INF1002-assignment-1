@@ -39,6 +39,12 @@ import matplotlib.pyplot as plt
 import datetime
 # %matplotlib inline
 
+from dash import Dash, html, dcc, Input, Output, State, dash_table
+import dash_bootstrap_components as dbc
+import plotly.express as px
+import plotly.graph_objects as go
+#from app import app #not a library, a local file
+
 mortality = pd.read_csv('../csv/covid-vaccination-vs-death_ratio.csv')
 #mortality is the name of the dataframe here
 mortality.head()
@@ -86,19 +92,38 @@ train_y = np.asanyarray(mydf[['New_deaths']])
 regr.fit (train_x, train_y)
 
 # The coefficients and Intercept of this Simple Linear Regression
-print(f'Coefficients: {regr.coef_[0][0]}')
-print(f'Intercept: {regr.intercept_[0]}')
+#print(f'Coefficients: {regr.coef_[0][0]}')
+#print(f'Intercept: {regr.intercept_[0]}')
 
 # Now it is time to draw the line we want using Coefficients and Intercept. 
 plt.scatter(mydf.ratio, mydf.New_deaths,  color='orange') 
 XX = train_x
 YY = regr.intercept_[0] + regr.coef_[0][0]*train_x   # y = Intercept + (Coeff * VaccinationRate)
+xFrame = []
+yFrame = []
+for xValue in XX:
+    xFrame.append(xValue[0])
+for yValue in YY:
+    yFrame.append(yValue[0])
+
+#print(YY)
 # Plotting Regression Line
 plt.plot(XX, YY, color='blue')
 plt.title("Denmark")
 plt.xlabel("Vaccination rate (%) ")
 plt.ylabel("New deaths")
-plt.show()
+#plt.show()
+
+trainDenmarkdf = pd.DataFrame(dict( x = xFrame, y = yFrame))
+figDenmark = px.scatter(data_frame=mydf,x='ratio', y='New_deaths', title='Denmark', 
+                        labels = {
+                            'ratio':'Vaccionation rate(%)',
+                            'New_deaths':'New Deaths'
+                        })
+figDenmark.add_trace(
+    go.Scatter(x=trainDenmarkdf.x,y=trainDenmarkdf.y, name = 'Linear Regression')
+)
+#figDenmark.show()
 
 # Calculate Predicted values by this model
 test_x = np.asanyarray(mydf[['ratio']])
@@ -108,15 +133,15 @@ predict_y = regr.predict(train_x)
 # Using Predicted values to mesure Error of this model
 # Mean absolute error
 MAE = np.mean(np.absolute(predict_y  - test_y))  
-print(f"Mean absolute error: {MAE:.2f}")
+#print(f"Mean absolute error: {MAE:.2f}")
 
 # Mean squared error
 MSE =  np.mean((predict_y  - test_y) ** 2)
-print(f"Residual sum of squares (MSE): {MSE:.2f}")
+#print(f"Residual sum of squares (MSE): {MSE:.2f}")
 
 # R2-score
 r2 = r2_score(test_y , predict_y)
-print(f"R2-score: {r2:.2f}")
+#print(f"R2-score: {r2:.2f}")
 
 # We put the data from Spain in the mortality variable .
 mydf = mortality[mortality.country == "Spain"]
@@ -132,20 +157,39 @@ train_y = np.asanyarray(mydf[['New_deaths']])
 regr.fit (train_x, train_y)
 
 # The coefficients and Intercept of this Simple Linear Regression
-print(f'Coefficients: {regr.coef_[0][0]}')
-print(f'Intercept: {regr.intercept_[0]}')
+#print(f'Coefficients: {regr.coef_[0][0]}')
+#print(f'Intercept: {regr.intercept_[0]}')
 
 # Now it is time to draw the line we want using Coefficients and Intercept. 
 plt.scatter(mydf.ratio, mydf.New_deaths,  color='orange') 
 XX = train_x
 YY = regr.intercept_[0] + regr.coef_[0][0]*train_x   # y = Intercept + (Coeff * VaccinationRate)
 
+xFrame = []
+yFrame = []
+for xValue in XX:
+    xFrame.append(xValue[0])
+for yValue in YY:
+    yFrame.append(yValue[0])
+
+trainSpaindf = pd.DataFrame(dict(x = xFrame, y = yFrame))
+figSpain = px.scatter(data_frame=mydf,x='ratio', y='New_deaths', title='Spain', 
+                        labels = {
+                            'ratio':'Vaccionation rate(%)',
+                            'New_deaths':'New Deaths'
+                        })  
+figSpain.add_trace(
+    go.Scatter(x=trainSpaindf.x,y=trainSpaindf.y, name = 'Linear Regression')
+)
+#figSpain.show()
+
+
 # Plotting Regression Line
 plt.plot(XX, YY, color='blue')
 plt.title("Spain")
 plt.xlabel("Vaccination rate (%) ")
 plt.ylabel("New deaths")
-plt.show()
+#plt.show()
 
 # Calculate Predicted values by this model
 test_x = np.asanyarray(mydf[['ratio']])
@@ -155,15 +199,15 @@ predict_y = regr.predict(train_x)
 # Using Predicted values to mesure Error of this model
 # Mean absolute error
 MAE = np.mean(np.absolute(predict_y  - test_y))  
-print(f"Mean absolute error: {MAE:.2f}")
+#(f"Mean absolute error: {MAE:.2f}")
 
 # Mean squared error
 MSE =  np.mean((predict_y  - test_y) ** 2)
-print(f"Residual sum of squares (MSE): {MSE:.2f}")
+#print(f"Residual sum of squares (MSE): {MSE:.2f}")
 
 # R2-score
 r2 = r2_score(test_y , predict_y)
-print(f"R2-score: {r2:.2f}")
+#print(f"R2-score: {r2:.2f}")
 
 """## Takeaways:
 
@@ -187,6 +231,8 @@ Let test out whether polynomial regression would be reliable to use this data.
 We define the **```plot_vaccine_mortality()```** function, which has three variables: ```country_name```, ```dataframe```, and ```degree```.
 """
 
+figureDict ={}
+
 def plot_vaccine_mortality(country_name, df, degree=2):
     """
     This function receives the dataset and the name of the country and dgree then divides
@@ -196,7 +242,7 @@ def plot_vaccine_mortality(country_name, df, degree=2):
     >>> plot_vaccine_mortality("Italy", df, 8)
     """
     #---------------------------
-    print(f"{country_name:-^80}")
+    #print(f"{country_name:-^80}")
     # Store country data in a variable 
     mydf = mortality[mortality.country == country_name]
     
@@ -225,12 +271,12 @@ def plot_vaccine_mortality(country_name, df, degree=2):
     train_y_ = clf.fit(train_x_poly, train_y)
     
     # Print The coefficients
-    print ('Coefficients: ')
-    for i, c in enumerate(clf.coef_[0]):
-        if i: print(f"{c:->22.10f} * X^{i}")
+    #print ('Coefficients: ')
+#    for i, c in enumerate(clf.coef_[0]):
+#        if i: print(f"{c:->22.10f} * X^{i}")
             
     # Print The Intercept    
-    print ('Intercept: ',clf.intercept_[0])
+    #print ('Intercept: ',clf.intercept_[0])
     
     # Constructing a scatterplot using train data with random color
     plt.scatter(train.ratio, train.New_deaths,  color= np.random.rand(3,))
@@ -248,8 +294,27 @@ def plot_vaccine_mortality(country_name, df, degree=2):
     plt.title(country_name)
     plt.xlabel("Vaccination rate (%) ")
     plt.ylabel("New deaths")
-    plt.show()
+    #plt.show()
     
+    xFrame = []
+    yFrame = []
+    for xValue in XX:
+        xFrame.append(xValue)
+    for yValue in YY:
+        yFrame.append(yValue)
+
+    figdf = pd.DataFrame(dict(x = xFrame, y = yFrame))
+    fig = px.scatter(data_frame=mydf,x='ratio', y='New_deaths', title=country_name, 
+                            labels = {
+                                'ratio':'Vaccionation rate(%)',
+                                'New_deaths':'New Deaths'
+                            })  
+    fig.add_trace(
+        go.Scatter(x=figdf.x,y=figdf.y, name = 'Linear Regression')
+    )
+    figureDict.update({country_name: fig})
+    #fig.show()
+
     # Now it's time to evaluate the model we build 
     # Calculate Predicted values by this model
     test_x_poly = poly.fit_transform(test_x)
@@ -258,17 +323,17 @@ def plot_vaccine_mortality(country_name, df, degree=2):
     # Using Predicted values to mesure Error of this model
     # Mean absolute error
     MAE = np.mean(np.absolute(predict_y - test_y))  
-    print(f"Mean absolute error: {MAE:.2f}")
+    #print(f"Mean absolute error: {MAE:.2f}")
     
     # Mean squared error
     MSE =  np.mean((predict_y - test_y) ** 2)
-    print(f"Residual sum of squares (MSE): {MSE:.2f}")
+    #print(f"Residual sum of squares (MSE): {MSE:.2f}")
     
     # R2-score
     r2 = r2_score(test_y, predict_y)
-    print(f"R2-score: {r2:.2f}")
+    #print(f"R2-score: {r2:.2f}")
     #---------------------------
-    print("-"*80)
+    #print("-"*80)
 
 """### Now we return to Spain's country's data and try to apply a polynomial regression model with degree of 3."""
 
@@ -307,3 +372,26 @@ plot_vaccine_mortality("Australia", mortality, 8)
 
 """
 
+layout = html.Div(children=[
+    html.H1(children=[
+        "Covid Vaccination Vs Death Ratio"
+    ]),
+    html.Div(children=[
+            dcc.Graph(figure = figDenmark),
+            dcc.Graph(figure = figSpain),
+    ]),
+    html.Div(children=[
+            dcc.Graph(figure = figureDict["Singapore"]),
+            dcc.Graph(figure = figureDict["The United Kingdom"]),
+            dcc.Graph(figure = figureDict["United States of America"]),
+            dcc.Graph(figure = figureDict["Denmark"]),
+            dcc.Graph(figure = figureDict["India"]),
+            dcc.Graph(figure = figureDict["Australia"])
+    ]),
+    html.P(children=[
+            "Takeaways:", html.Br(),
+            "- the **R2-score** for every country has improved. Showing a strong correlation between the deaths and vaccination rate.", html.Br(),
+            "- It seems that as more people are fully vaccinated, there are fewer deaths.", html.Br(),
+            "- The data was taken from before covid's peak amount of deaths before people were vaccinated through the deaths spiking and lowering. **Time** should be factored in as a constraint to shape the data"
+    ]),
+])

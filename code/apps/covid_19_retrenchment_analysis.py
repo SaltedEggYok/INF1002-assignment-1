@@ -29,7 +29,7 @@ import seaborn as sns
 from dash import Dash, html, dcc, Input, Output, State, dash_table
 import dash_bootstrap_components as dbc
 import plotly.express as px
-from app import app #not a library, a local file
+#from .app import app #own file
 
 # Read COVID-19 dataset
 data=pd.read_excel("../csv/data-2022-10-14T073337-284.xlsx",sheet_name="transformed_data")
@@ -49,7 +49,7 @@ The following columns are:
 """
 
 # Print column names
-print(data.columns)
+#print(data.columns)
 
 """# 2. Clean the dataset
 
@@ -309,7 +309,7 @@ plt.subplot(2, 2, 3)
 total3.plot(ax=plt.gca(), title='Singapore')
 plt.ylabel("Counts", size=13)
 
-print(total2)
+#print(total2)
 
 """# 4. Grouping all datasets together
 
@@ -330,7 +330,7 @@ I will first go ahead and read in the retrenchment dataset
 import os
 df_industry= pd.read_csv("../csv/retrench_industry_yearly.csv")
 
-print(dfyearnumerical.head())
+#print(dfyearnumerical.head())
 
 """Finally, I have merged the COVID-19 dataset and the retrenchment dataset together for deeper visualizations"""
 
@@ -339,7 +339,7 @@ finalindustry = df_industry.merge(dfyearnumerical, on='year', how='left')
 
 """This is the final dataset containing the merged data"""
 
-print(finalindustry.head())
+#print(finalindustry.head())
 
 """Followed by filling up the missing values with '0'"""
 
@@ -391,10 +391,10 @@ fig.update_layout(
 )
 
 colors = ["#2A66DE", "#FFC32B","#d4c2b6","#b5829b"]
-print(finalindustry.industry1.unique())
+#print(finalindustry.industry1.unique())
 figureArray = []
 for r, c in zip(finalindustry.industry1.unique(), colors):
-    print(r)
+    #print(r)
     plot_df = finalindustry[finalindustry.industry1 ==r]
     
     # Create figure with secondary y-axis
@@ -425,9 +425,9 @@ fig.update_layout(
 )
 
 colors = ["#2A66DE", "#FFC32B","#d4c2b6","#b5829b","#025097","#1c96d2","#fdcc09","#f9a01b","#e81c75","#29c84f","#2bccb0","#bbdfff","#4ca2ee","#ff75b6","#107fb4","#31c9c6","#fcbb30","#eb3f67","#8545d8","#0f9ce2"]
-print(finalindustry.industry2.unique())
+#print(finalindustry.industry2.unique())
 for r, c in zip(finalindustry.industry2.unique(), colors):
-    print(r)
+    #print(r)
     plot_df = finalindustry[finalindustry.industry2 ==r]
     
     # Create figure with secondary y-axis
@@ -527,34 +527,34 @@ layout = html.Div(children=[
             "Infer: COVID-19 has caused a huge impact on the retrenchment rate"]),
             #show final graphs
     html.Div(children=[
-        dcc.Graph(figure = fig_retrenchment),
-        dcc.Graph(figure = figureArray[0]),
-        dcc.Graph(figure = figureArray[1]),
-        dcc.Graph(figure = figureArray[2]),
-        dcc.Graph(figure = figureArray[3]),
-        dcc.Graph(figure = figureArray[4]),
-        dcc.Graph(figure = figureArray[5]),
-        dcc.Graph(figure = figureArray[6]),
-        dcc.Graph(figure = figureArray[7]),
-        dcc.Graph(figure = figureArray[8]),
-        dcc.Graph(figure = figureArray[9]),
-        dcc.Graph(figure = figureArray[10]),
-        dcc.Graph(figure = figureArray[11]),
-        dcc.Graph(figure = figureArray[12]),
-        dcc.Graph(figure = figureArray[13]),
-        dcc.Graph(figure = figureArray[14]),
-        dcc.Graph(figure = figureArray[15]),
-        dcc.Graph(figure = figureArray[16]),
-        dcc.Graph(figure = figureArray[17]),
-        dcc.Graph(figure = figureArray[18]),
-        dcc.Graph(figure = figureArray[19]),
-        dcc.Graph(figure = figureArray[20]),
-        dcc.Graph(figure = figureArray[21]),
-\
+            dcc.Graph(figure = fig_retrenchment),
+            dcc.Graph(figure = figureArray[0]),
+            dcc.Graph(figure = figureArray[1]),
+            dcc.Graph(figure = figureArray[2]),
+            dcc.Graph(figure = figureArray[3]),
+            dcc.Graph(figure = figureArray[4]),
+            dcc.Graph(figure = figureArray[5]),
+            dcc.Graph(figure = figureArray[6]),
+            dcc.Graph(figure = figureArray[7]),
+            dcc.Graph(figure = figureArray[8]),
+            dcc.Graph(figure = figureArray[9]),
+            dcc.Graph(figure = figureArray[10]),
+            dcc.Graph(figure = figureArray[11]),
+            dcc.Graph(figure = figureArray[12]),
+            dcc.Graph(figure = figureArray[13]),
+            dcc.Graph(figure = figureArray[14]),
+            dcc.Graph(figure = figureArray[15]),
+            dcc.Graph(figure = figureArray[16]),
+            dcc.Graph(figure = figureArray[17]),
+            dcc.Graph(figure = figureArray[18]),
+            dcc.Graph(figure = figureArray[19]),
+            dcc.Graph(figure = figureArray[20]),
+            dcc.Graph(figure = figureArray[21]),
+
     ])
 ])
 
-@app.callback(Output('asassdf', 'children'),
-[Input('asdf','pathname')])
-def lmao(what):
-    x= 0
+#@app.callback(Output('asassdf', 'children'),
+#[Input('asdf','pathname')])
+#def lmao(what):
+#    x= 0

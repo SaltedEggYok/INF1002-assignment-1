@@ -7,7 +7,7 @@ from dash.dependencies import Input, Output, State
 from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
 import plotly.express as px
-from app import app
+from apps.app import app
 
 worldvaxrate_df = pd.read_csv(r"..\csv\vaccinerate.csv")
 

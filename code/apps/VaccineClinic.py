@@ -5,7 +5,7 @@ from tabulate import tabulate
 from dash import Dash, html, dcc, Input, Output, State, dash_table
 import dash_bootstrap_components as dbc
 import plotly.express as px
-from app import app #not a library, a local file
+from apps.app import app #not a library, a local file
 
 clinics_df = pd.read_csv(r"..\csv\vaccineclinic.csv")
 
