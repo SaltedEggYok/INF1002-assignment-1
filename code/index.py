@@ -7,7 +7,8 @@ from dash import Dash, html, dcc
 from apps.app import server
 from apps.app import app
 # put filenames here
-from apps import MainPage, VaccineRate, VaccineClinic, covid_vaccination_vs_death_ratio,covid_19_retrenchment_analysis
+from apps import MainPage, VaccineRate, VaccineClinic
+#, covid_vaccination_vs_death_ratio,covid_19_retrenchment_analysis
 
 dropdown = dbc.DropdownMenu(
     children=[
@@ -78,10 +79,10 @@ def display_page(pathname):
         return VaccineRate.layout
     elif pathname == '/VaccineClinics':
         return VaccineClinic.layout
-    elif pathname == '/RetrenchmentAnalysis':
-        return covid_19_retrenchment_analysis.layout
-    elif pathname == '/VaccinationVSDeathRatio':
-        return covid_vaccination_vs_death_ratio.layout
+#    elif pathname == '/RetrenchmentAnalysis':
+#        return covid_19_retrenchment_analysis.layout
+#    elif pathname == '/VaccinationVSDeathRatio':
+#        return covid_vaccination_vs_death_ratio.layout
     elif pathname == '/lmao what':
         return MainPage.layout
     else:
