@@ -186,7 +186,7 @@ plt.figure(figsize = (15,8))
 sns.set(font_scale=2.6)
 ax_corr19 = sns.heatmap(df19_rev.corr(), annot = True, vmin = -1, vmax = 1, center = 0,annot_kws={"size": 30}, cmap = 'YlGnBu')
 
-figHeatmap = px.imshow(df19_rev.corr())
+figHeatmap19 = px.imshow(df19_rev.corr())
 #figHeatmap.show()
 
 # Merge df19 and df20 with dfCovid
@@ -230,7 +230,7 @@ plt.figure(figsize = (15,8))
 sns.set(font_scale=2.6)
 ax_corr20 = sns.heatmap(df20_rev.corr(), annot = True, vmin = -1, vmax = 1, center = 0,annot_kws={"size": 30}, cmap = 'YlGnBu')
 
-figHeatmapCorr20 = px.imshow(df20_rev.corr())
+figHeatmap20 = px.imshow(df20_rev.corr())
 
 # SINGAPORE WHR DATA
 
@@ -239,9 +239,41 @@ df18sg = df18[df18['Country'] == 'Singapore']
 print(df18sg)
 
 
-layout = {
+layout = html.Div(children=[
     html.H1(children=[
         "Happiness Index"
     ]),
-
-}
+    html.Div(children=[
+        dcc.Graph(figure = fig2018head),
+        dcc.Graph(figure = fig2018tail),
+    ]),
+    html.Div(children=[
+        dcc.Graph(figure = fig2019head),
+        dcc.Graph(figure = fig2019tail),
+    ]),
+    html.Div(children=[
+        dcc.Graph(figure = fig2020head),
+        dcc.Graph(figure = fig2020tail),
+    ]),
+    html.Div(children=[
+        dcc.Graph(figure = fig2021head),
+        dcc.Graph(figure = fig2021tail),
+    ]),
+    html.Div(children=[
+        dcc.Graph(figure = fig2018head),
+        dcc.Graph(figure = fig2018tail),
+    ]),
+    html.Div(children=[
+        dcc.Graph(figure = fig2018head),
+        dcc.Graph(figure = fig2018tail),
+    ]),
+    html.Div(children=[
+        dcc.Graph(figure = figHeatmap19),
+    ]),
+    html.Div(children=[
+        dcc.Graph(figure = figWHR),
+    ]),
+    html.Div(children=[
+        dcc.Graph(figure = figHeatmap20),
+    ]),
+])

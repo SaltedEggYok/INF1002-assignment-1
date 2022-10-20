@@ -7,8 +7,7 @@ from dash import Dash, html, dcc
 from apps.app import server
 from apps.app import app
 # put filenames here
-from apps import MainPage, VaccineRate, VaccineClinic
-#, covid_vaccination_vs_death_ratio,covid_19_retrenchment_analysis
+from apps import MainPage, VaccineRate, VaccineClinic, covid_vaccination_vs_death_ratio,covid_19_retrenchment_analysis, HappinessIndex
 
 dropdown = dbc.DropdownMenu(
     children=[
@@ -26,7 +25,7 @@ navButtons = dbc.Nav(
         dbc.Button("Vaccine Clinics", color="primary",href="/VaccineClinics",className = "me-1"),
         dbc.Button("Retrenchment Analysis", color="primary",href="/RetrenchmentAnalysis",className = "me-1"),
         dbc.Button("Vaccination VS Death Ratio", color="primary",href="/VaccinationVSDeathRatio",className = "me-1"),
-        dbc.Button("New", color="primary",href="/lmao what",className = "me-1"),
+        dbc.Button("Happiness Index", color="primary",href="/HappinessIndex",className = "me-1"),
 #dbc.Button("Primary", color="primary",className = "me-1"),
     ],
     #navbar=True
@@ -83,10 +82,10 @@ def display_page(pathname):
 #        return covid_19_retrenchment_analysis.layout
 #    elif pathname == '/VaccinationVSDeathRatio':
 #        return covid_vaccination_vs_death_ratio.layout
-    elif pathname == '/lmao what':
-        return MainPage.layout
+    elif pathname == '/HappinessIndex':
+        return HappinessIndex.layout
     else:
-        x = 0
+        return MainPage.layout
         #return home.layout or whatever is the landing page here
 
 if __name__ == '__main__':
