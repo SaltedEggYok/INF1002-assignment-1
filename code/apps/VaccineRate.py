@@ -4,12 +4,12 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 from dash.dependencies import Input, Output, State
-from dash import Dash, html, dcc
+from dash import Dash, html, dcc,dash_table
 import dash_bootstrap_components as dbc
 import plotly.express as px
 from apps.app import app
 
-worldvaxrate_df = pd.read_csv(r"..\csv\vaccinerate.csv")
+worldvaxrate_df = pd.read_csv("../csv/vaccinerate.csv")
 
 # checking null value
 null = worldvaxrate_df.isna().sum()
@@ -45,85 +45,10 @@ sg = worldvaxrate_df.loc[worldvaxrate_df["Country"] == "Singapore"]
 sgsum = sg.loc[:, ["Country", "% of population vaccinated", "% of population fully vaccinated"]]
 
 #declare layout
-layout = html.Div()
-layoutOption = 1
-"""
-# creating user input
-qns = int(input("This is the following datas we can provide for vaccination rates:"
-                "\n1) top 5 countries with highest vaccinated rate"
-                "\n2) top 5 countries with highest fully vaccinated rate"
-                "\n3) singapore's vaccination rate"+
-                "\n4) bottom 5 countries with lowest vaccinated rate"
-                "\n5) bottom 5 countries with lowest fully vaccinated rate"
-                "\nPlease choose the number for the data you would like to find out more:"))
-
-
-if qns == 1:
-    plt.figure(figsize=(10, 7))
-    plots = sns.barplot(data=top5vaxratesum, x="Country", y="% of population vaccinated")
-    for bar in plots.patches:
-        plots.annotate(format(bar.get_height(), '.2f'),
-                       (bar.get_x() + bar.get_width() / 2,
-                        bar.get_height()), ha='center', va='center',
-                       size=10, xytext=(0, 8),
-                       textcoords='offset points')
-    plt.xlabel("Countries", size=14)
-    plt.ylabel("percentage of population vaccinated", size=14)
-    plt.title("Top 5 vaccinated rate countries")
-    plt.show()
-
-elif qns == 2:
-    plt.figure(figsize=(10, 7))
-    plots = sns.barplot(data=top5fullvaxratesum, x="Country", y="% of population fully vaccinated")
-    for bar in plots.patches:
-        plots.annotate(format(bar.get_height(), '.2f'),
-                       (bar.get_x() + bar.get_width() / 2,
-                        bar.get_height()), ha='center', va='center',
-                       size=10, xytext=(0, 8),
-                       textcoords='offset points')
-    plt.xlabel("Countries", size=14)
-    plt.ylabel("percentage of population fully vaccinated", size=14)
-    plt.title("Top 5 fully vaccinated rate countries")
-    plt.show()
-
-elif qns == 3:
-    print(sgsum)
-elif qns == 4:
-    plt.figure(figsize=(10, 7))
-    plots = sns.barplot(data=bot5vaxratesumsort, x="Country", y="% of population vaccinated")
-    for bar in plots.patches:
-        plots.annotate(format(bar.get_height(), '.2f'),
-                       (bar.get_x() + bar.get_width() / 2,
-                        bar.get_height()), ha='center', va='center',
-                       size=10, xytext=(0, 8),
-                       textcoords='offset points')
-    plt.xlabel("Countries", size=14)
-    plt.ylabel("percentage of population vaccinated", size=14)
-    plt.title("Bottom 5 fully vaccinated rate countries")
-    plt.show()
-elif qns == 5:
-    plt.figure(figsize=(10, 7))
-    plots = sns.barplot(data=bot5fullvaxratesumsort, x="Country", y="% of population fully vaccinated")
-    for bar in plots.patches:
-        plots.annotate(format(bar.get_height(), '.2f'),
-                       (bar.get_x() + bar.get_width() / 2,
-                        bar.get_height()), ha='center', va='center',
-                       size=10, xytext=(0, 8),
-                       textcoords='offset points')
-    plt.xlabel("Countries", size=14)
-    plt.ylabel("percentage of population fully vaccinated", size=14)
-    plt.title("Bottom 5 fully vaccinated rate countries")
-    plt.show()
-else:
-    print("Please enter a valid number")
-"""
-
-
 layout = html.Div(children = [
-    
     #top text and graph, init below
-    html.Div(id="display-graph"),
-
+    html.H1("Vaccination Rates Around the World"),
+    html.P("To understand more about the world vaccination rate and also Singapore's vaccination rate:"),
     #local graph selection, affects the div above this
     html.Div(children=[
         dcc.RadioItems(id="graph-choice",
@@ -137,57 +62,55 @@ layout = html.Div(children = [
             value = 'HVR',
             labelStyle={'display':'block'}
         )
-    ])
+    ]),
+    html.Div(id="display-graph"),    
+    
 ])
 
 @app.callback(Output("display-graph","children"), [[Input('graph-choice','value'),]])
-def swapDisplay(choice):   
+def swapDisplay(choice):
+    titleText = ''   
     match choice:
         case 'HVR':
             figure1 = px.bar(top5vaxratesum,  x="Country", y="% of population vaccinated", color="Country", text = "% of population vaccinated")
             figure1.update_traces(textposition = 'outside')
-            return html.Div(children = [                
-                    html.H1(children = "Top 5 countries with highest rate of vaccination"),
-                    dcc.Graph(id= 'displayGraph', figure=figure1)
-                    ]
-                )
+            titleText = 'Top 5 countries with highest rate of vaccination'
         case 'HFVR':
             figure1 = px.bar(top5fullvaxratesum,  x="Country", y="% of population fully vaccinated", color="Country", text = "% of population fully vaccinated")
             figure1.update_traces(textposition = 'outside')
-            return html.Div(children = [                
-                    html.H1(children = "Top countries with highest rate of full vaccinations"),
-                    dcc.Graph(id= 'displayGraph', figure=figure1)
-                    ]
-                )
+            titleText = 'Top countries with highest rate of full vaccinations'
         case 'SVR':
-            figure1 = px.bar(top5vaxratesum,  x="Country", y="% of population vaccinated", color="Country", text = "% of population vaccinated",)
-            figure1.update_traces(textposition = 'outside')
+            figure1 = dash_table.DataTable(
+                id = 'table',
+                columns = [{"name": i, "id":i}
+                            for i in sgsum],
+                data = sgsum.to_dict('records'),
+                style_header={'backgroundColor' : 'paleturquoise'},
+                style_data={'backgroundColor':'lavender'},
+                style_cell={'maxWidth': '25rem','height':'auto','whiteSpace':'normal', 'textAlign':'left'},
+                fill_width=False
+            )
             return html.Div(children = [                
-                    html.H1(children = "TEMP"),
-                    dcc.Graph(id= 'displayGraph', figure=figure1)
+                    html.H4(children = "Vaccination Rate of Singapore"),
+                    figure1
                     ]
                 )        
         case 'LVR':
             figure1 = px.bar(bot5vaxratesumsort,  x="Country", y="% of population vaccinated", color="Country", text = "% of population vaccinated")
             figure1.update_traces(textposition = 'outside')
-            return html.Div(children = [                
-                    html.H1(children = "Bottom 5 countries with lowest rate of vaccination"),
-                    dcc.Graph(id= 'displayGraph', figure=figure1)
-                    ]
-                )        
+            titleText = 'Bottom 5 countries with lowest rate of vaccination'
         case 'LFVR':
             figure1 = px.bar(bot5fullvaxratesumsort,  x="Country", y="% of population fully vaccinated", color="Country", text = "% of population fully vaccinated")
             figure1.update_traces(textposition = 'outside')
-            return html.Div(children = [                
-                    html.H1(children = "Bottom countries with lowest rate of full vaccination"),
-                    dcc.Graph(id= 'displayGraph', figure=figure1)
-                    ]
-                )        
-
+            titleText = 'Bottom countries with lowest rate of full vaccination'
         case _:
-            return html.Div(children = [                
-                    html.H1(children = "Dead with highest rate of vaccination"),
-                    dcc.Graph(id= 'displayGraph', figure=figure1)
-                    ]
-                ) 
+            titleText = 'Somethig went wrong'
+            figure1 = px.bar(pd.DataFrame( { 'x':[1], 'y':[1] } ), x='x',y='y')
+  
+    return html.Div(children = [                
+            html.H4(titleText),
+            dcc.Graph(figure=figure1)
+            ]
+        ) 
+
         

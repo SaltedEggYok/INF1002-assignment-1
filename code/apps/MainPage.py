@@ -1,25 +1,5 @@
-from msilib import text
 from dash import Dash, html, dcc, dash_table
 import dash_bootstrap_components as dbc
-import plotly.express as px
-import pandas as pd
-
-#app = Dash(__name__)
-
-#assume you have a "long-form" data frame
-dataFrame = pd.DataFrame({
-    "Fruit": ["Apples", "Oranges", "Bananas", "Apples", "Oranges", "Bananas"],
-    "Amount": [4, 1, 2, 2, 4, 5],
-    "City": ["SF", "SF", "SF", "Montreal", "Montreal", "Montreal"]
-})
-
-figure1 = px.bar(dataFrame,
-                 x="Fruit",
-                 y="Amount",
-                 color="City",
-                 barmode="group",
-                 text="Amount")
-figure1.update_traces(textposition='outside')
 
 layout = html.Div(children=[
     #opening, landing
@@ -99,9 +79,7 @@ layout = html.Div(children=[
                 ),
                 #explanations of the segment
                 dbc.Col(children=[
-                    html.P(children=['To show the vaccination rates in every country, we plot bar charts to show the ranking and percentage for comparison.',
-                        html.Br(),
-                        'Identify Singapore clinics to take vaccinations, especially for particular age groups, such as children aged 5 to 11 years old,'
+                    html.P(children=['When COVID-19 started, vaccinations are rolled out quickly. This will allow people to take vaccines to increase their immunity to fight against the COVID-19 virus and various sub-variants of COVID-19 such as delta, omicron, Ba.4, Ba.5, and XBB. Many countries are using the strategy of "living with COVID-19". This makes vaccination a requirement for some activities, such as work, concerts, traveling, dine-in at restaurants, and more. To find out more about vaccination rates and vaccine clinics in Singapore, feel free to click and explore!'
                         ]
                     ),
                     ],

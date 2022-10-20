@@ -29,7 +29,7 @@ import seaborn as sns
 from dash import Dash, html, dcc, Input, Output, State, dash_table
 import dash_bootstrap_components as dbc
 import plotly.express as px
-#from .app import app #own file
+from apps.app import app #own file
 
 # Read COVID-19 dataset
 data=pd.read_excel("../csv/data-2022-10-14T073337-284.xlsx",sheet_name="transformed_data")
@@ -527,7 +527,12 @@ layout = html.Div(children=[
             "Infer: COVID-19 has caused a huge impact on the retrenchment rate"]),
             #show final graphs
     html.Div(children=[
-            dcc.Graph(figure = fig_retrenchment),
+            dcc.Graph(figure = fig_retrenchment, id = 'mainRetGraph'),
+            dcc.Checklist(id = 'checklist', 
+                options= finalindustry.industry1.unique(), 
+                value= finalindustry.industry1.unique(),
+                inline = True
+            ),
             dcc.Graph(figure = figureArray[0]),
             dcc.Graph(figure = figureArray[1]),
             dcc.Graph(figure = figureArray[2]),
@@ -554,7 +559,11 @@ layout = html.Div(children=[
     ])
 ])
 
-#@app.callback(Output('asassdf', 'children'),
-#[Input('asdf','pathname')])
-#def lmao(what):
-#    x= 0
+@app.callback(Output('mainRetGraph', 'figure'),[Input('checklist','value')])
+def updateRetGraph(industry):
+    df = finalindustry
+    mask = df.industry1.isin(industry)
+    fig = px.line(df[mask],  x='year', y='retrench', color='industry3', #facet_col='year',
+            labels=dict(industry1 = 'Industries', retrench = 'Number of Workers Retrenched', construction='Construction')
+            )
+    return fig

@@ -78,10 +78,10 @@ def display_page(pathname):
         return VaccineRate.layout
     elif pathname == '/VaccineClinics':
         return VaccineClinic.layout
-#    elif pathname == '/RetrenchmentAnalysis':
-#        return covid_19_retrenchment_analysis.layout
-#    elif pathname == '/VaccinationVSDeathRatio':
-#        return covid_vaccination_vs_death_ratio.layout
+    elif pathname == '/RetrenchmentAnalysis':
+        return covid_19_retrenchment_analysis.layout
+    elif pathname == '/VaccinationVSDeathRatio':
+        return covid_vaccination_vs_death_ratio.layout
     elif pathname == '/HappinessIndex':
         return HappinessIndex.layout
     else:

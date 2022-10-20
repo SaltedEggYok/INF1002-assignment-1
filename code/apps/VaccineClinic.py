@@ -1,13 +1,11 @@
 import pandas as pd
 import numpy as np
-from tabulate import tabulate
-
 from dash import Dash, html, dcc, Input, Output, State, dash_table
 import dash_bootstrap_components as dbc
 import plotly.express as px
 from apps.app import app #not a library, a local file
 
-clinics_df = pd.read_csv(r"..\csv\vaccineclinic.csv")
+clinics_df = pd.read_csv("../csv/vaccineclinic.csv")
 
 # checking null value
 null = clinics_df.isna().sum()
@@ -37,35 +35,16 @@ snv = clinics_df[clinics_df['vaccine'].str.contains('Sinovac')].sort_values(by=[
 
 # vaccine clinic locations for novavax
 nova = clinics_df[clinics_df['vaccine'].str.contains('Novavax')].sort_values(by=['name'])
-"""
-# asking users for input
-qns = int(input("This is the following datas we can provide for vaccines in singapore:"
-                "\n1) type of vaccines provided in singapore"
-                "\n2) type of vaccine clinic locations for children"
-                "\n3) type of vaccine clinic locations for pfizer/comirnaty"
-                "\n4) type of vaccine clinic locations for sinovac"
-                "\n5) type of vaccine clinic locations for novavax"
-                "\nPlease choose the number for the data you would like to find out more:"))
-if qns == 1:
-    print(clean)
-elif qns == 2:
-    print(tabulate(tabular_data=child, headers='keys', tablefmt='fancy_grid'))
-elif qns == 3:
-    print(tabulate(tabular_data=pfz, headers='keys', tablefmt='fancy_grid'))
-elif qns == 4:
-    print(tabulate(tabular_data=snv, headers='keys', tablefmt='fancy_grid'))
-elif qns == 5:
-    print(tabulate(tabular_data=nova, headers='keys', tablefmt='fancy_grid'))
-else:
-    print("Please enter a valid number")
-"""
 
 layout = html.Div(children = [
     
-    #top text and graph, init below
-    html.Div(id="display-table"),
+    #top text
+    html.Div(children=[
+        html.H1("Available Vaccination Clinics"),
+        html.P("Find out about types of vaccinations provided in Singapore's Public Health Preparedness Clinics:")
+    ]),
 
-    #local graph selection, affects the div above this
+    #local graph selection, affects the div below this
     html.Div(children=[
         dcc.RadioItems(id="display-choice",
             options=[
@@ -78,7 +57,9 @@ layout = html.Div(children = [
             value = 'vaxInSG',
             labelStyle={'display':'block'}
         )
-    ])
+    ]),
+
+    html.Div(id="display-table"),
 ])
 
 
@@ -105,9 +86,10 @@ def swapDisplay(choice):
             columns = [{"name": i, "id":i}
                         for i in df_pointer],
             data = df_pointer.to_dict('records'),
-            style_cell=dict(textAlign='left'),
-            style_header=dict(backgroundColor = "paleturquoise"),
-            style_data=dict(backgroundColor = "lavender")
+            style_header={'backgroundColor' : 'paleturquoise'},
+            style_data={'backgroundColor':'lavender'},
+            style_cell={'maxWidth': '25rem','height':'auto','whiteSpace':'normal', 'textAlign':'left'},
+            fill_width=False
         )
     return html.Div(children=[
         header,

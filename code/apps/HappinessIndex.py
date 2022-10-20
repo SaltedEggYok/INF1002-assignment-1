@@ -98,7 +98,7 @@ df18_tail = df18.tail(10)
 
 ct_df18 = pd.concat([df18_head, df18_tail])
 
-print(ct_df18)
+#print(ct_df18)
 
 # Display top 10 and botom 10 countries Happiness Scores for 2018
 plt.figure(figsize = (35,8)) # Adjust size of plot for it to be read
@@ -119,7 +119,7 @@ df19_tail = df19.tail(10)
 
 ct_df19 = pd.concat([df19_head, df19_tail])
 
-print(ct_df19)
+#print(ct_df19)
 
 # Display top 10 and botom 10 countries Happiness Scores for 2019
 plt.figure(figsize = (35,8)) # Adjust size of plot for it to be read
@@ -140,7 +140,7 @@ df20_tail = df20.tail(10)
 
 ct_df20 = pd.concat([df20_head, df20_tail])
 
-print(ct_df20)
+#print(ct_df20)
 
 # Display top 10 and botom 10 countries Happiness Scores for 2020
 plt.figure(figsize = (35,8)) # Adjust size of plot for it to be read
@@ -161,7 +161,7 @@ df21_tail = df21.tail(10)
 
 ct_df21 = pd.concat([df21_head, df21_tail])
 
-print(ct_df21)
+#print(ct_df21)
 
 # Display top 10 and botom 10 countries Happiness Scores for 2021
 plt.figure(figsize = (35,8)) # Adjust size of plot for it to be read
@@ -236,7 +236,7 @@ figHeatmap20 = px.imshow(df20_rev.corr())
 
 df18sg = df18[df18['Country'] == 'Singapore']
 
-print(df18sg)
+#print(df18sg)
 
 
 layout = html.Div(children=[
