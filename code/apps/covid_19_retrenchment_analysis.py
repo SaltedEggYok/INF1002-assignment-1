@@ -457,96 +457,24 @@ for r, c in zip(finalindustry.industry2.unique(), colors):
 #    fig.show()
 
 
-mask = ['0'] #global coz...
 layout = html.Div(children=[
-    html.H1("COVID-19 Analysis on Retrenchment"),
-    html.P("Aim: Give user better insight of the COVID-19 situation"),
-
-    html.P(children=["From the data gathered, users can use the tool to:" , html.Br(),
-            "1. Educate themselves on the potential job stability during the pandemic" , html.Br(),
-            "2. Help them decide what potential jobs they can look for during the pandemic"]),
-    html.H4("1. Read the dataset"),
+    html.H1("Analysis of COVID-19 effects on Retrenchment"),
+    html.P(children = ["""
+    The COVID-19 pandemic affects different sectors of the Singapore economy to varying degrees, as shown in the visualizations below""",
+    html.Br(), html.Br(),
+    """
+    The services sector includes global and domestic travel restrictions to stem the spread of COVID-19, which has resulted in a significant drop in tourist arrivals to Singapore and international air travel in general. As illustrated in the services sector below, restrictions have significantly impacted the accommodation, air transportation, and support services sectors, as well as the arts, entertainment, and recreation sectors.
+    Similarly, decreased domestic consumption and travel significantly impact consumer-facing industries such as food and beverage services, retail trade, and many others.""", 
+    html.Br(), html.Br(),
+    """
+    Outward-oriented manufacturing industry sectors, such as wholesale and retail trade, transportation, and storage, have been negatively impacted by the drop in external demand and supply chain disruptions.
+    Furthermore, sentiment-sensitive sectors such as finance and insurance have seen increased volatility due to increased uncertainty and concerns about the spread of COVID-19. """,
+    html.Br(),html.Br(),
+    """
+    Finally, domestically-oriented sectors such as construction, real estate, and other business services sectors have been negatively impacted by the decline in domestic economic activity and weaker sentiments. Furthermore, the construction industry is expected to experience manpower disruptions soon due to additional measures implemented to combat the spread of COVID-19 at construction sites and dormitories.
+    """
+    ]),
     html.Br(),
-    html.P(children=["I will first go ahead and read in the COVID-19 dataset"]),
-    html.P(children=["The dataset reveals the effects of the global economy on Singapore during the pandemic.", html.Br(),
-            "The following columns are:", html.Br(),
-            "1. CODE", html.Br(),
-            "2. COUNTRY", html.Br(),
-            "3. DATE", html.Br(),
-            "4. HDI (Human Development Index)", html.Br(),
-            "5. TC (Total Cases)", html.Br(),
-            "6. TD (Total Deaths)", html.Br(),
-            "7. STI (Strigency Index)", html.Br(),
-            "8. POP (Population)", html.Br(),
-            "9. GDPCAP ($)"]),
-    #insert print(data.columns)
-    html.H4("2. Clean the dataset"),
-    html.Br(),
-    html.P(children=["Firstly, I would like to filter the country columns by selecting Singapore", html.Br(),
-            "Next, I would like to convert the data type of the Date column to Date type", html.Br(),
-            "Followed by filling up the missing values with average values", html.Br(),
-            "Finally, I would like to segregate the date to day, month and year in order to merge with the retrenchment dataset later on"]),
-    html.P(children=["3. Explore the dataset", html.Br(),
-            "I am now going to explore the HDI variable in my dataset", html.Br()]),
-    html.H4("3.1 HDI (Human Development Index)"),
-    html.Br(),
-    html.P(children=["It measures the country's average achievement in terms of health, knowledge and standard of living", html.Br(),
-            "*Reference :http://hdr.undp.org/en/content/human-development-index-hdi*", html.Br(),
-            "Aim: Identify if HDI has an impact on Singapore's economy during the pandemic", html.Br(),
-            "Results: There is no indication that HDI is being affected by COVID-19 as the rate is normal since there is no variation in the data values", html.Br(),
-            "Therefore, HDI is not a good variable to use for my retrenchment visualizations later on"]),
-    #show figure
-    html.P(children=["Next, I am going to explore the STI variable in my dataset", html.Br(),]),
-    html.H4("3.2 STI (Strigency Index)"),
-    html.Br(),
-    html.P(children=["It is a government response tracker that measures the containment policies such as school and workplace closures, stay-at-home policies, etc.", html.Br(),
-            "*Reference : https://www.civilsdaily.com/news/what-is-stringency-index/*", html.Br(),
-            "Assume: Affects the retrenchment rate in Singapore due to the closures which will cause many people to lose their jobs in various industries", html.Br(),
-            "Aim: To see how STI is performing everyday during COVID-19", html.Br(),
-            "Results: There is a pattern across the whole month (1-30days) for 2 years", html.Br(),
-            "Therefore, STI seems to be a good variable to use for my retrenchment visualizations later on"]),
-    
-    html.P(children=["I did a distributional plot to have a clearer view of my insights", html.Br(),
-            "Results: STI seems to be high for the past 2 years where a lot of them falls along 3.8", html.Br(),
-            "The distributional plot is skewed towards the right which tells me that COVID-19 has an impact on Singapore's STI"]),
-#show STI figure
- 
-    html.H4('3.3 GDPCAP'),
-    html.Br(),
-    html.P(children=["It measures the country's economic activity *(↑ GDPCAP = ↓ population)*", html.Br(),
-            "Once you do the math, the wealth is spread among fewer people, which raises a country's GDP", html.Br(),
-            "*Reference : https://www.thebalance.com/gdp-per-capita-formula-u-s-compared-to-highest-and-lowest-3305848*", html.Br(),
-            "Aim: Tell me how prosperous a country feels to each of its citizens by measuring the country's standard of living through GDPCAP", html.Br(),
-            "Results: There is no indication that GDPCAP is being affected by COVID-19 as the rate is normal since there is no variation in the data values", html.Br(),
-            "Therefore, GDPCAP is not a good variable to use for my retrenchment visualizations later on"]),
-    html.H4('3.4 TC (Total Cases)'),
-    html.Br(),
-    html.P(children=["Assume: Affects the retrenchment rate in Singapore due to the number of COVID-19 cases which will cause many people to WFH ", html.Br(),
-            "However, some industries do not have WFH policies where retrenchment will jump into the picture", html.Br(),
-            "I plotted a time-series plot to view the number of COVID-19 cases in Singapore"]),
-            #show total cases graph
-    html.H4('3.5 TD (Total Deaths)'),
-    html.Br(),
-    html.P(children=["I do not see any logic between total deaths and retrenchment rate"]),
-    html.P(children=["Inspecting time series and rolling mean", html.Br(),
-            "Rolling means (moving averages) are generally used to smooth out short-term fluctuations in time series data and highlight long-term trends"]),
-            #show rolling graph here line 253 and 265?
-    html.P(children=["Now, to take a look at my overall COVID-19 dataset for further visualizations"]),
-    html.H4('Results:'),
-    html.Br(),
-    html.P(children=["1. Noticed that HDI and GDPCAP are constant", html.Br(),
-            "2. Noticed that there is some pattern going on in TD, TC and STI", html.Br(),
-            "In this case, I have decided to use `TC` and `STI` as my indicator for my retrenchment visualizations**"]),
-    html.H4('4. Grouping all datasets together'),
-    html.Br(),
-    html.P(children=["The COVID-19's date column is in day type while the retrenchment dataset is in year type", html.Br(),
-            "Thus, due to the mismatched of the granularity data, I have decided to standardize the date type to yearly in order to merge the datasets later on"]),
-    html.H4('5. Final Dataset'),
-    html.Br(),
-    html.P(children=["I will first go ahead and read in the retrenchment dataset",html.Br(),
-            "I decided to plot a bar chart to take a look at the retrenchment rate over the years by industry type",html.Br(),
-            "Results: 2020 seems to have the highest number of retrenchment rate in various industries over the last 4 years",html.Br(),
-            "Infer: COVID-19 has caused a huge impact on the retrenchment rate"]),
             #show final graphs
     html.Div(children=[
             dcc.Graph(figure = fig_retrenchment, id = 'mainRetGraph'),
@@ -577,7 +505,9 @@ layout = html.Div(children=[
             html.Div(id='fig19', children=dcc.Graph(figure = figureDict[namelist[19]])),
             html.Div(id='fig20', children=dcc.Graph(figure = figureDict[namelist[20]])),
             html.Div(id='fig21', children=dcc.Graph(figure = figureDict[namelist[21]])),
-    ])
+    ]),
+    html.H4("Conclusion:"),
+    html.P("""The economy has some bright spots, including new opportunities with increased demand for online sales, services, and healthcare services. However, the global and Singapore economies must be closely monitored in the coming months as the COVID-19 situation remains fluid. Domestically, how the Singapore retrenchment rate performs for the rest of the year will be determined by our ability to resume economic activities safely and without a resurgence of infections in the community."""),
 ])
 @app.callback([Output('mainRetGraph', 'figure'),
 Output('fig0', 'children'),
