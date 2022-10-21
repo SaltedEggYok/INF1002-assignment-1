@@ -6,21 +6,15 @@ layout = html.Div(children=[
     html.H1(children='Analysis on Covid-19'),
 
     html.P(children=[
-        'The impacts of COVID-19 have spread widely in every direction,', 
-        'as the public appears to have only limited information about how COVID-19 has affected various industries.',
-        'Despite the increasing vaccination rates for COVID-19,',
-        ' hesitancy continues to be a barrier to the full immunization of the eligible population.',
-        ' This report explains the impacts of COVID-19, such as retrenchment, well-being, and vaccinations.',
-        ' The goal is to give users a new, profound understanding of the COVID-19 situation and encourage users to take vaccines.',
-        ' The report also covers various data sets to create visualizations, such as simple linear regression,',
-        ' polynomial regression, bar charts, line charts, heat maps, and tables.',
-        ' In addition, an in-depth explanation of the linear regression method,',
-        ' such as the accuracy of the correlation. There would also be an additional feature ',
-        'of providing vaccine clinic locations in Singapore. Hence, users can derive that the',
-        ' retrenchment rate has risen over the last two years of COVID-19, there is a slight ',
-        'increase in the happiness score, and vaccines are helpful and encouraged to take to ',
-        'prevent high mortality. The findings indicate that continued efforts are needed to ',
-        'bolster beliefs about the safety of approved vaccines for COVID-19 and retrenchment.'
+        """
+        COVID-19's impacts have spread widely in all directions such as 
+        economical damage to various industries. Despite rising COVID-19 
+        vaccination rates, hesitancy remains a barrier to full disease 
+        immunization. This GUI shows the effects of COVID-19 on 
+        retrenchment, well-being, and vaccinations. The goal is to provide 
+        the public with a profound understanding of the COVID-19 situation 
+        and to encourage them to take vaccines.
+        """
         ]
     ),
 
@@ -72,6 +66,20 @@ layout = html.Div(children=[
                         )
                     ]),
                     html.Br(),
+                    dbc.Row(children=[
+                        dcc.Link(
+                            html.Button('Vaccination VS Death rates', 
+                                style = {'background-color':'#79E587',
+                                        'width':'16rem',
+                                        'padding':'0.5rem',
+                                },
+                            ),
+                            href="/VaccinationVSDeathRatio",
+                            refresh=True
+                        )
+                    ]),
+
+                    html.Br(),
                     #button 3 https://github.com/SaltedEggYok/INF1002-assignment-1/tree/main/csv
                     dbc.Row(children=[
                         dcc.Link(
@@ -95,59 +103,11 @@ layout = html.Div(children=[
                         ]
                     ),
                     ],
-                    width=8
+                    width=8,
+                    style={'border':'2px black solid'},
                 )
-            ]),
-            html.Br(),
-            #Entire row of elements related to Safety of Vaccines
-            dbc.Row(children=[
-                #left column of buttons
-                dbc.Col(children=[
-                    #label
-                    dbc.Row(children=[
-                        dbc.Card(
-                            html.H3(children='Safety of Vaccines',),
-                            body=True,
-                            color='#2754D8',
-                            style={'width': '20rem', 
-                                    'height':'60%',
-                            },
-                        ),
-                    ]),
-                    html.Br(),
-                    #button 1
-                    dbc.Row(children=[
-                        dcc.Link(
-                            html.Button('Vaccination VS Death rates', 
-                                style = {'background-color':'#548FE0',
-                                        'width':'16rem',
-                                        'padding':'0.5rem',
-                                },
-                            ),
-                            href="/VaccinationVSDeathRatio",
-                            refresh=True
-                        )
-                    ]),
-                    html.Br(),
-                    #button 2
-                    dbc.Row(children=[
-                        html.Button('Dataset', 
-                            style = {'background-color':'#548FE0',
-                                    'width':'16rem',
-                                    'padding':'0.5rem',
-                            },
-                        ),
-                    ]),
-                ],
-                width=4
-                ),
-                #explanations of the segment
-                dbc.Col(children=[
-                    html.P('Our analysis method consists primarily of linear regression as it helps us to identify and understand the correlation within the COVID-19 situation in Singapore, such as mortality and vaccination rates or stringent index and total covid cases in Singapore.'),
-                    ],
-                    width=8
-                )
-            ]),
+            ],            
+            ),
             html.Br(),
             #Entire row of elements related to Retrenchment
             dbc.Row(children=[
@@ -181,12 +141,16 @@ layout = html.Div(children=[
                     html.Br(),
                     #button 2
                     dbc.Row(children=[
-                        html.Button('Dataset', 
-                            style = {'background-color':'#B176E8',
-                                    'width':'16rem',
-                                    'padding':'0.5rem',
-                            },
-                        ),
+                        dcc.Link(
+                            html.Button('Dataset', 
+                                style = {'background-color':'#B176E8',
+                                        'width':'16rem',
+                                        'padding':'0.5rem',
+                                },
+                            ),
+                            href="https://github.com/SaltedEggYok/INF1002-assignment-1/tree/main/csv",
+                            refresh=True
+                        )
                     ]),
                 ],
                 width=4
@@ -195,7 +159,8 @@ layout = html.Div(children=[
                 dbc.Col(children=[
                     html.P('We want to determine whether there is a strong correlation between the Human Development Index (HDI), Stringency Index (STI), Gross Domestic Product per Capita (GDPCAP), Total Deaths due to COVID-19 (TD) and the Total Cases of COVID-19 (TC).'),
                     ],
-                    width=8
+                    width=8,
+                    style={'border':'2px black solid'}
                 )
             ]),
             html.Br(),
@@ -231,13 +196,16 @@ layout = html.Div(children=[
                     html.Br(),
                     #button 2
                     dbc.Row(children=[
-                        html.Button('Dataset', 
-                            style = {'background-color':'#E4C548',
-                                    'width':'16rem',
-                                    'padding':'0.5rem',
-                            },
-
-                        ),
+                        dcc.Link(
+                            html.Button('Dataset', 
+                                style = {'background-color':'#E4C548',
+                                        'width':'16rem',
+                                        'padding':'0.5rem',
+                                },
+                            ),
+                            href="https://github.com/SaltedEggYok/INF1002-assignment-1/tree/main/csv",
+                            refresh=True
+                        )
                     ]),
                 ],
                 width=4
@@ -246,7 +214,8 @@ layout = html.Div(children=[
                 dbc.Col(children=[
                     html.P('We plot a Pearson Correlation Heatmap to analyse which of the various factors (GDP per Capita, Social Support, Life Expectancy, Freedom, Generosity, Perception of Corruption) are positively correlated to the Happiness Score.'),
                     ],
-                    width=8
+                    width=8,
+                    style={'border':'2px black solid'}
                 )
             ]),
 

@@ -380,6 +380,8 @@ chart.set_xticklabels(chart.get_xticklabels(), rotation=45, horizontalalignment=
 fig_retrenchment = px.line(finalindustry,  x='year', y='retrench', color='industry3', #facet_col='year',
             labels=dict(industry1 = 'Industries', retrench = 'Number of Workers Retrenched', construction='Construction')
             )
+#fig_retrenchment.update_xaxes(ticklabelstep = 1)
+fig_retrenchment.update_xaxes(ticktext=['2018','2019','2020','2021'], tickvals=['2018','2019','2020','2021'])
 
 fig = go.Figure()
 
@@ -393,10 +395,12 @@ fig.update_layout(
 colors = ["#2A66DE", "#FFC32B","#d4c2b6","#b5829b"]
 #print(finalindustry.industry1.unique())
 figureArray = []
+figureDict = {}
+namelist = []
 for r, c in zip(finalindustry.industry1.unique(), colors):
     #print(r)
     plot_df = finalindustry[finalindustry.industry1 ==r]
-    
+    title = r.capitalize()
     # Create figure with secondary y-axis
     fig = make_subplots(specs=[[{"secondary_y": True}]])
     fig.add_trace(
@@ -408,7 +412,11 @@ for r, c in zip(finalindustry.industry1.unique(), colors):
     fig.add_trace(
         go.Scatter(x=[plot_df.year, plot_df.industry1], y=plot_df[('STI', 'sum')], name="STI"),
         secondary_y=True,)
+    fig.update_layout(title=title)
+    fig.update_xaxes()
     figureArray.append(fig)
+    figureDict.update({r:fig})
+    namelist.append(r)
 #    fig.show()
 
 import plotly.graph_objects as go
@@ -429,7 +437,7 @@ colors = ["#2A66DE", "#FFC32B","#d4c2b6","#b5829b","#025097","#1c96d2","#fdcc09"
 for r, c in zip(finalindustry.industry2.unique(), colors):
     #print(r)
     plot_df = finalindustry[finalindustry.industry2 ==r]
-    
+    title = r.capitalize()
     # Create figure with secondary y-axis
     fig = make_subplots(specs=[[{"secondary_y": True}]])
     fig.add_trace(
@@ -441,20 +449,25 @@ for r, c in zip(finalindustry.industry2.unique(), colors):
     fig.add_trace(
         go.Scatter(x=[plot_df.year, plot_df.industry2], y=plot_df[('STI', 'sum')], name="STI"),
         secondary_y=True,)
+    fig.update_layout(title=title)
     figureArray.append(fig)
+    figureDict.update({r:fig})
+    namelist.append(r)
+
 #    fig.show()
 
 
+mask = ['0'] #global coz...
 layout = html.Div(children=[
-    html.P("COVID-19 Analyzer on Retrenchment"),
+    html.H1("COVID-19 Analysis on Retrenchment"),
     html.P("Aim: Give user better insight of the COVID-19 situation"),
 
     html.P(children=["From the data gathered, users can use the tool to:" , html.Br(),
             "1. Educate themselves on the potential job stability during the pandemic" , html.Br(),
             "2. Help them decide what potential jobs they can look for during the pandemic"]),
-
-    html.P(children=["# 1. Read the dataset" , html.Br(),
-            "I will first go ahead and read in the COVID-19 dataset"]),
+    html.H4("1. Read the dataset"),
+    html.Br(),
+    html.P(children=["I will first go ahead and read in the COVID-19 dataset"]),
     html.P(children=["The dataset reveals the effects of the global economy on Singapore during the pandemic.", html.Br(),
             "The following columns are:", html.Br(),
             "1. CODE", html.Br(),
@@ -467,23 +480,26 @@ layout = html.Div(children=[
             "8. POP (Population)", html.Br(),
             "9. GDPCAP ($)"]),
     #insert print(data.columns)
-    html.P(children=["# 2. Clean the dataset", html.Br(),
-            "Firstly, I would like to filter the country columns by selecting Singapore", html.Br(),
+    html.H4("2. Clean the dataset"),
+    html.Br(),
+    html.P(children=["Firstly, I would like to filter the country columns by selecting Singapore", html.Br(),
             "Next, I would like to convert the data type of the Date column to Date type", html.Br(),
             "Followed by filling up the missing values with average values", html.Br(),
             "Finally, I would like to segregate the date to day, month and year in order to merge with the retrenchment dataset later on"]),
-    html.P(children=["# 3. Explore the dataset", html.Br(),
-            "I am now going to explore the HDI variable in my dataset", html.Br(),
-            "3.1 HDI (Human Development Index)", html.Br(),
-            "It measures the country's average achievement in terms of health, knowledge and standard of living", html.Br(),
+    html.P(children=["3. Explore the dataset", html.Br(),
+            "I am now going to explore the HDI variable in my dataset", html.Br()]),
+    html.H4("3.1 HDI (Human Development Index)"),
+    html.Br(),
+    html.P(children=["It measures the country's average achievement in terms of health, knowledge and standard of living", html.Br(),
             "*Reference :http://hdr.undp.org/en/content/human-development-index-hdi*", html.Br(),
             "Aim: Identify if HDI has an impact on Singapore's economy during the pandemic", html.Br(),
             "Results: There is no indication that HDI is being affected by COVID-19 as the rate is normal since there is no variation in the data values", html.Br(),
             "Therefore, HDI is not a good variable to use for my retrenchment visualizations later on"]),
     #show figure
-    html.P(children=["Next, I am going to explore the STI variable in my dataset", html.Br(),
-            "3.2 STI (Strigency Index)", html.Br(),
-            "It is a government response tracker that measures the containment policies such as school and workplace closures, stay-at-home policies, etc.", html.Br(),
+    html.P(children=["Next, I am going to explore the STI variable in my dataset", html.Br(),]),
+    html.H4("3.2 STI (Strigency Index)"),
+    html.Br(),
+    html.P(children=["It is a government response tracker that measures the containment policies such as school and workplace closures, stay-at-home policies, etc.", html.Br(),
             "*Reference : https://www.civilsdaily.com/news/what-is-stringency-index/*", html.Br(),
             "Assume: Affects the retrenchment rate in Singapore due to the closures which will cause many people to lose their jobs in various industries", html.Br(),
             "Aim: To see how STI is performing everyday during COVID-19", html.Br(),
@@ -495,33 +511,39 @@ layout = html.Div(children=[
             "The distributional plot is skewed towards the right which tells me that COVID-19 has an impact on Singapore's STI"]),
 #show STI figure
  
-    html.P(children=["3.3 GDPCAP", html.Br(),
-            "It measures the country's economic activity *(↑ GDPCAP = ↓ population)*", html.Br(),
+    html.H4('3.3 GDPCAP'),
+    html.Br(),
+    html.P(children=["It measures the country's economic activity *(↑ GDPCAP = ↓ population)*", html.Br(),
             "Once you do the math, the wealth is spread among fewer people, which raises a country's GDP", html.Br(),
             "*Reference : https://www.thebalance.com/gdp-per-capita-formula-u-s-compared-to-highest-and-lowest-3305848*", html.Br(),
             "Aim: Tell me how prosperous a country feels to each of its citizens by measuring the country's standard of living through GDPCAP", html.Br(),
             "Results: There is no indication that GDPCAP is being affected by COVID-19 as the rate is normal since there is no variation in the data values", html.Br(),
             "Therefore, GDPCAP is not a good variable to use for my retrenchment visualizations later on"]),
-    html.P(children=["3.4 TC (Total Cases)", html.Br(),
-            "Assume: Affects the retrenchment rate in Singapore due to the number of COVID-19 cases which will cause many people to WFH ", html.Br(),
+    html.H4('3.4 TC (Total Cases)'),
+    html.Br(),
+    html.P(children=["Assume: Affects the retrenchment rate in Singapore due to the number of COVID-19 cases which will cause many people to WFH ", html.Br(),
             "However, some industries do not have WFH policies where retrenchment will jump into the picture", html.Br(),
             "I plotted a time-series plot to view the number of COVID-19 cases in Singapore"]),
             #show total cases graph
-    html.P(children=["3.5 TD (Total Deaths)", html.Br(),
-            "I do not see any logic between total deaths and retrenchment rate"]),
+    html.H4('3.5 TD (Total Deaths)'),
+    html.Br(),
+    html.P(children=["I do not see any logic between total deaths and retrenchment rate"]),
     html.P(children=["Inspecting time series and rolling mean", html.Br(),
             "Rolling means (moving averages) are generally used to smooth out short-term fluctuations in time series data and highlight long-term trends"]),
             #show rolling graph here line 253 and 265?
     html.P(children=["Now, to take a look at my overall COVID-19 dataset for further visualizations"]),
-    html.P(children=["Results:" , html.Br(),
-            "1. Noticed that HDI and GDPCAP are constant", html.Br(),
+    html.H4('Results:'),
+    html.Br(),
+    html.P(children=["1. Noticed that HDI and GDPCAP are constant", html.Br(),
             "2. Noticed that there is some pattern going on in TD, TC and STI", html.Br(),
             "In this case, I have decided to use `TC` and `STI` as my indicator for my retrenchment visualizations**"]),
-    html.P(children=["# 4. Grouping all datasets together", html.Br(),
-            "The COVID-19's date column is in day type while the retrenchment dataset is in year type", html.Br(),
+    html.H4('4. Grouping all datasets together'),
+    html.Br(),
+    html.P(children=["The COVID-19's date column is in day type while the retrenchment dataset is in year type", html.Br(),
             "Thus, due to the mismatched of the granularity data, I have decided to standardize the date type to yearly in order to merge the datasets later on"]),
-    html.P(children=["# 4. Final Dataset",html.Br(),
-            "I will first go ahead and read in the retrenchment dataset",html.Br(),
+    html.H4('5. Final Dataset'),
+    html.Br(),
+    html.P(children=["I will first go ahead and read in the retrenchment dataset",html.Br(),
             "I decided to plot a bar chart to take a look at the retrenchment rate over the years by industry type",html.Br(),
             "Results: 2020 seems to have the highest number of retrenchment rate in various industries over the last 4 years",html.Br(),
             "Infer: COVID-19 has caused a huge impact on the retrenchment rate"]),
@@ -533,37 +555,70 @@ layout = html.Div(children=[
                 value= finalindustry.industry1.unique(),
                 inline = True
             ),
-            dcc.Graph(figure = figureArray[0]),
-            dcc.Graph(figure = figureArray[1]),
-            dcc.Graph(figure = figureArray[2]),
-            dcc.Graph(figure = figureArray[3]),
-            dcc.Graph(figure = figureArray[4]),
-            dcc.Graph(figure = figureArray[5]),
-            dcc.Graph(figure = figureArray[6]),
-            dcc.Graph(figure = figureArray[7]),
-            dcc.Graph(figure = figureArray[8]),
-            dcc.Graph(figure = figureArray[9]),
-            dcc.Graph(figure = figureArray[10]),
-            dcc.Graph(figure = figureArray[11]),
-            dcc.Graph(figure = figureArray[12]),
-            dcc.Graph(figure = figureArray[13]),
-            dcc.Graph(figure = figureArray[14]),
-            dcc.Graph(figure = figureArray[15]),
-            dcc.Graph(figure = figureArray[16]),
-            dcc.Graph(figure = figureArray[17]),
-            dcc.Graph(figure = figureArray[18]),
-            dcc.Graph(figure = figureArray[19]),
-            dcc.Graph(figure = figureArray[20]),
-            dcc.Graph(figure = figureArray[21]),
-
+            html.Div(id='fig0', children=dcc.Graph(figure = figureDict[namelist[0]])),
+            html.Div(id='fig1', children=dcc.Graph(figure = figureDict[namelist[1]])),
+            html.Div(id='fig2', children=dcc.Graph(figure = figureDict[namelist[2]])),
+            html.Div(id='fig3', children=dcc.Graph(figure = figureDict[namelist[3]])),
+            html.Div(id='fig4', children=dcc.Graph(figure = figureDict[namelist[4]])),
+            html.Div(id='fig5', children=dcc.Graph(figure = figureDict[namelist[5]])),
+            html.Div(id='fig6', children=dcc.Graph(figure = figureDict[namelist[6]])),
+            html.Div(id='fig7', children=dcc.Graph(figure = figureDict[namelist[7]])),
+            html.Div(id='fig8', children=dcc.Graph(figure = figureDict[namelist[8]])),
+            html.Div(id='fig9', children=dcc.Graph(figure = figureDict[namelist[9]])),
+            html.Div(id='fig10', children=dcc.Graph(figure = figureDict[namelist[10]])),
+            html.Div(id='fig11', children=dcc.Graph(figure = figureDict[namelist[11]])),
+            html.Div(id='fig12', children=dcc.Graph(figure = figureDict[namelist[12]])),
+            html.Div(id='fig13', children=dcc.Graph(figure = figureDict[namelist[13]])),
+            html.Div(id='fig14', children=dcc.Graph(figure = figureDict[namelist[14]])),
+            html.Div(id='fig15', children=dcc.Graph(figure = figureDict[namelist[15]])),
+            html.Div(id='fig16', children=dcc.Graph(figure = figureDict[namelist[16]])),
+            html.Div(id='fig17', children=dcc.Graph(figure = figureDict[namelist[17]])),
+            html.Div(id='fig18', children=dcc.Graph(figure = figureDict[namelist[18]])),
+            html.Div(id='fig19', children=dcc.Graph(figure = figureDict[namelist[19]])),
+            html.Div(id='fig20', children=dcc.Graph(figure = figureDict[namelist[20]])),
+            html.Div(id='fig21', children=dcc.Graph(figure = figureDict[namelist[21]])),
     ])
 ])
-
-@app.callback(Output('mainRetGraph', 'figure'),[Input('checklist','value')])
+@app.callback([Output('mainRetGraph', 'figure'),
+Output('fig0', 'children'),
+Output('fig1', 'children'),
+Output('fig2', 'children'),
+Output('fig3', 'children'),
+Output('fig4', 'children'),
+Output('fig5', 'children'),
+Output('fig6', 'children'),
+Output('fig7', 'children'),
+Output('fig8', 'children'),
+Output('fig9', 'children'),
+Output('fig10', 'children'),
+Output('fig11', 'children'),
+Output('fig12', 'children'),
+Output('fig13', 'children'),
+Output('fig14', 'children'),
+Output('fig15', 'children'),
+Output('fig16', 'children'),
+Output('fig17', 'children'),
+Output('fig18', 'children'),
+Output('fig19', 'children'),
+Output('fig20', 'children'),
+Output('fig21', 'children'),
+],[Input('checklist','value')])
 def updateRetGraph(industry):
     df = finalindustry
     mask = df.industry1.isin(industry)
     fig = px.line(df[mask],  x='year', y='retrench', color='industry3', #facet_col='year',
             labels=dict(industry1 = 'Industries', retrench = 'Number of Workers Retrenched', construction='Construction')
             )
-    return fig
+    fig.update_xaxes(ticktext=['2018','2019','2020','2021'], tickvals=['2018','2019','2020','2021'])
+    counter = 0
+    divArray=[]
+    
+    for name in namelist:
+        if name in df[mask].industry1.values or name in df[mask].industry2.values or name in df[mask].industry3.values:
+            divArray.append(dcc.Graph(figure = figureDict[name]) )
+            #divArray.append(html.P("yes"))
+        else:
+            divArray.append(html.Div())
+        counter +=1
+    
+    return fig, divArray[0], divArray[1], divArray[2], divArray[3], divArray[4], divArray[5], divArray[6], divArray[7], divArray[8], divArray[9], divArray[10], divArray[11], divArray[12], divArray[13], divArray[14], divArray[15], divArray[16], divArray[17], divArray[18], divArray[19], divArray[20], divArray[21]

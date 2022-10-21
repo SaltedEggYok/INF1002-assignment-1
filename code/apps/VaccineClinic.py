@@ -41,9 +41,9 @@ layout = html.Div(children = [
     #top text
     html.Div(children=[
         html.H1("Available Vaccination Clinics"),
-        html.P("Find out about types of vaccinations provided in Singapore's Public Health Preparedness Clinics:")
+        html.P("Click to find out about types of vaccinations provided in Singapore's Public Health Preparedness Clinics:")
     ]),
-
+    html.Br(),
     #local graph selection, affects the div below this
     html.Div(children=[
         dcc.RadioItems(id="display-choice",

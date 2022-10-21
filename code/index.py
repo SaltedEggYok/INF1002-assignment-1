@@ -13,7 +13,8 @@ dropdownVacc = dbc.DropdownMenu(
     children=[
         dbc.DropdownMenuItem("Vaccine Rates", href="/VaccineRates"),
         dbc.DropdownMenuItem("Vaccine Clinics", href="/VaccineClinics"),
-        dbc.DropdownMenuItem("Dataset", href="")
+        dbc.DropdownMenuItem("Vaccination VS Death", href="/VaccinationVSDeathRatio"),
+        dbc.DropdownMenuItem("Dataset", href="https://github.com/SaltedEggYok/INF1002-assignment-1/tree/main/csv")
     ],
     nav = True,
     in_navbar = True,
@@ -24,7 +25,7 @@ dropdownVacc = dbc.DropdownMenu(
 dropdownDeath = dbc.DropdownMenu(
     children=[
         dbc.DropdownMenuItem("Vaccination VS Death Ratios", href="/VaccinationVSDeathRatio"),
-        dbc.DropdownMenuItem("Dataset", href="")
+        dbc.DropdownMenuItem("Dataset", href="https://github.com/SaltedEggYok/INF1002-assignment-1/tree/main/csv")
     ],
     nav = True,
     in_navbar = True,
@@ -35,7 +36,7 @@ dropdownDeath = dbc.DropdownMenu(
 dropdownRet = dbc.DropdownMenu(
     children=[
         dbc.DropdownMenuItem("Retrenchment Analysis", href="/RetrenchmentAnalysis"),
-        dbc.DropdownMenuItem("Dataset", href="")
+        dbc.DropdownMenuItem("Dataset", href="https://github.com/SaltedEggYok/INF1002-assignment-1/tree/main/csv")
     ],
     nav = True,
     in_navbar = True,
@@ -46,7 +47,7 @@ dropdownRet = dbc.DropdownMenu(
 dropdownHappy = dbc.DropdownMenu(
     children=[
         dbc.DropdownMenuItem("Happiness Index", href="/HappinessIndex"),
-        dbc.DropdownMenuItem("Dataset", href="")
+        dbc.DropdownMenuItem("Dataset", href="https://github.com/SaltedEggYok/INF1002-assignment-1/tree/main/csv")
     ],
     nav = True,
     in_navbar = True,
@@ -87,7 +88,7 @@ navbar = dbc.Navbar(
             dbc.Collapse(
                 dbc.Nav(
                     # right align dropdown menu with ml-auto className
-                    [navButtons,dropdownVacc,dropdownDeath,dropdownRet,dropdownHappy], className="ml-auto", navbar=True
+                    [navButtons,dropdownVacc,dropdownRet,dropdownHappy], className="ml-auto", navbar=True
                 ),
                 id="navbar-collapse2",
                 navbar=True,

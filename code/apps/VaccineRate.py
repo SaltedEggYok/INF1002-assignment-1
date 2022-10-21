@@ -48,8 +48,9 @@ sgsum = sg.loc[:, ["Country", "% of population vaccinated", "% of population ful
 layout = html.Div(children = [
     #top text and graph, init below
     html.H1("Vaccination Rates Around the World"),
-    html.P("To understand more about the world vaccination rate and also Singapore's vaccination rate:"),
+    html.P("Click to find out more about the world vaccination rate and also Singapore's vaccination rate:"),
     #local graph selection, affects the div above this
+    html.Br(),
     html.Div(children=[
         dcc.RadioItems(id="graph-choice",
             options=[

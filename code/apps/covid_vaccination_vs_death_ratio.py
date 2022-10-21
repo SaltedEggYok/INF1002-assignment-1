@@ -117,7 +117,7 @@ plt.ylabel("New deaths")
 trainDenmarkdf = pd.DataFrame(dict( x = xFrame, y = yFrame))
 figDenmark = px.scatter(data_frame=mydf,x='ratio', y='New_deaths', title='Denmark', 
                         labels = {
-                            'ratio':'Vaccionation rate(%)',
+                            'ratio':'Vaccination rate(%)',
                             'New_deaths':'New Deaths'
                         })
 figDenmark.add_trace(
@@ -175,7 +175,7 @@ for yValue in YY:
 trainSpaindf = pd.DataFrame(dict(x = xFrame, y = yFrame))
 figSpain = px.scatter(data_frame=mydf,x='ratio', y='New_deaths', title='Spain', 
                         labels = {
-                            'ratio':'Vaccionation rate(%)',
+                            'ratio':'Vaccination rate(%)',
                             'New_deaths':'New Deaths'
                         })  
 figSpain.add_trace(
@@ -306,7 +306,7 @@ def plot_vaccine_mortality(country_name, df, degree=2):
     figdf = pd.DataFrame(dict(x = xFrame, y = yFrame))
     fig = px.scatter(data_frame=mydf,x='ratio', y='New_deaths', title=country_name, 
                             labels = {
-                                'ratio':'Vaccionation rate(%)',
+                                'ratio':'Vaccination rate(%)',
                                 'New_deaths':'New Deaths'
                             })  
     fig.add_trace(
@@ -374,12 +374,15 @@ plot_vaccine_mortality("Australia", mortality, 8)
 
 layout = html.Div(children=[
     html.H1(children=[
-        "Covid Vaccination Vs Death Ratio"
-    ]),
-    html.Div(children=[
-            dcc.Graph(figure = figDenmark),
-            dcc.Graph(figure = figSpain),
-    ]),
+        "Vaccine Hesitancy"
+    ],
+    style={'textAlign':'center'}
+    ),
+    html.P("""Vaccine hesitancy poses such a risk to public health that 
+    the World Health Organization(WHO) named it one of the top ten global 
+    health threats. Here we can see visually through statistics, mortality 
+    rate is lower when vaccinated""", style={'textAlign':'center'}),
+
     html.Div(children=[
             dcc.Graph(figure = figureDict["Singapore"]),
             dcc.Graph(figure = figureDict["The United Kingdom"]),
@@ -389,9 +392,10 @@ layout = html.Div(children=[
             dcc.Graph(figure = figureDict["Australia"])
     ]),
     html.P(children=[
-            "Takeaways:", html.Br(),
-            "- the **R2-score** for every country has improved. Showing a strong correlation between the deaths and vaccination rate.", html.Br(),
-            "- It seems that as more people are fully vaccinated, there are fewer deaths.", html.Br(),
-            "- The data was taken from before covid's peak amount of deaths before people were vaccinated through the deaths spiking and lowering. **Time** should be factored in as a constraint to shape the data"
-    ]),
+        """The data was taken from before Covid-19's peak amount of deaths, 
+        before people were vaccinated through the deaths spiking and lowering.
+        Time should be factored in as a contraint to shape the data."""
+    ],
+    style={'textAlign':'center'}
+    ),
 ])

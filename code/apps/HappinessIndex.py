@@ -210,7 +210,7 @@ plt.figure(figsize = (15,8))
 sns.set(font_scale=2.6)
 ax_corr19 = sns.heatmap(df19_rev.corr(), annot = True, vmin = -1, vmax = 1, center = 0,annot_kws={"size": 30}, cmap = 'YlGnBu')
 
-figHeatmap19 = px.imshow(df19_rev.corr(), title='2019 Happiness Heatmap',text_auto='.2f')
+figHeatmap19 = px.imshow(df19_rev.corr(), title='2019 Pearson Correlation Heatmap',text_auto='.2f',range_color=[-1,1])
 #figHeatmap.show()
 
 # Merge df19 and df20 with dfCovid
@@ -260,7 +260,7 @@ plt.figure(figsize = (15,8))
 sns.set(font_scale=2.6)
 ax_corr20 = sns.heatmap(df20_rev.corr(), annot = True, vmin = -1, vmax = 1, center = 0,annot_kws={"size": 30}, cmap = 'YlGnBu')
 
-figHeatmap20 = px.imshow(df20_rev.corr(), title='2020 Happiness Heatmap', text_auto='.2f')
+figHeatmap20 = px.imshow(df20_rev.corr(), title='2020 Pearson Correlation Heatmap', text_auto='.2f',range_color=[-1,1])
 
 # SINGAPORE WHR DATA
 
@@ -271,7 +271,7 @@ df18sg = df18[df18['Country'] == 'Singapore']
 
 layout = html.Div(children=[
     html.H1(children=[
-        "Happiness Index"
+        "World Happiness Index"
     ]),
     html.H4(children=['2018'],style={'textAlign':'center'}),
     dbc.Row(children=[
