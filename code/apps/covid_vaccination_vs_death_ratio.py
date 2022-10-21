@@ -47,14 +47,14 @@ import plotly.graph_objects as go
 
 mortality = pd.read_csv('../csv/covid-vaccination-vs-death_ratio.csv')
 #mortality is the name of the dataframe here
-mortality.head()
+#mortality.head()
 #This is a dataset with 26622 lines of data regarding total vaccinations, people vaccinated, and new deaths by country and date
 
-mortality.describe()
+#mortality.describe()
 
-mortality.info()
+#mortality.info()
 
-mortality["country"].unique()
+#mortality["country"].unique()
 
 """# Evaluation
 To measure the accuracy of a regression model, we compare the actual and projected values. Evaluation metrics play an important part in the development of a model since they give insight into areas that need to be improved. There are several model assessment metrics; in this case, we'll use MSE to determine the accuracy of our model based on the test set:
@@ -96,7 +96,7 @@ regr.fit (train_x, train_y)
 #print(f'Intercept: {regr.intercept_[0]}')
 
 # Now it is time to draw the line we want using Coefficients and Intercept. 
-plt.scatter(mydf.ratio, mydf.New_deaths,  color='orange') 
+#plt.scatter(mydf.ratio, mydf.New_deaths,  color='orange') 
 XX = train_x
 YY = regr.intercept_[0] + regr.coef_[0][0]*train_x   # y = Intercept + (Coeff * VaccinationRate)
 xFrame = []
@@ -108,10 +108,10 @@ for yValue in YY:
 
 #print(YY)
 # Plotting Regression Line
-plt.plot(XX, YY, color='blue')
-plt.title("Denmark")
-plt.xlabel("Vaccination rate (%) ")
-plt.ylabel("New deaths")
+#plt.plot(XX, YY, color='blue')
+#plt.title("Denmark")
+#plt.xlabel("Vaccination rate (%) ")
+#plt.ylabel("New deaths")
 #plt.show()
 
 trainDenmarkdf = pd.DataFrame(dict( x = xFrame, y = yFrame))
@@ -161,7 +161,7 @@ regr.fit (train_x, train_y)
 #print(f'Intercept: {regr.intercept_[0]}')
 
 # Now it is time to draw the line we want using Coefficients and Intercept. 
-plt.scatter(mydf.ratio, mydf.New_deaths,  color='orange') 
+#plt.scatter(mydf.ratio, mydf.New_deaths,  color='orange') 
 XX = train_x
 YY = regr.intercept_[0] + regr.coef_[0][0]*train_x   # y = Intercept + (Coeff * VaccinationRate)
 
@@ -185,10 +185,10 @@ figSpain.add_trace(
 
 
 # Plotting Regression Line
-plt.plot(XX, YY, color='blue')
-plt.title("Spain")
-plt.xlabel("Vaccination rate (%) ")
-plt.ylabel("New deaths")
+#plt.plot(XX, YY, color='blue')
+#plt.title("Spain")
+#plt.xlabel("Vaccination rate (%) ")
+#plt.ylabel("New deaths")
 #plt.show()
 
 # Calculate Predicted values by this model
@@ -279,7 +279,7 @@ def plot_vaccine_mortality(country_name, df, degree=2):
     #print ('Intercept: ',clf.intercept_[0])
     
     # Constructing a scatterplot using train data with random color
-    plt.scatter(train.ratio, train.New_deaths,  color= np.random.rand(3,))
+    #plt.scatter(train.ratio, train.New_deaths,  color= np.random.rand(3,))
     
     # Set the X axis using numpy:   np.arange(start, end, interval)
     XX = np.arange(train_x[0], train_x[-1], 0.1)
@@ -290,10 +290,10 @@ def plot_vaccine_mortality(country_name, df, degree=2):
         YY += clf.coef_[0][d]*np.power(XX, d)
         
     # On the previous scatterplot, we fit the regression model with red color. 
-    plt.plot(XX, YY, '-r' )
-    plt.title(country_name)
-    plt.xlabel("Vaccination rate (%) ")
-    plt.ylabel("New deaths")
+    #plt.plot(XX, YY, '-r' )
+    #plt.title(country_name)
+    #plt.xlabel("Vaccination rate (%) ")
+    #plt.ylabel("New deaths")
     #plt.show()
     
     xFrame = []
