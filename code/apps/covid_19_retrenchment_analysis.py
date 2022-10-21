@@ -69,7 +69,7 @@ data["DATE"] = pd.to_datetime(data["DATE"], format = '%Y-%m-%d')
 # Replace missing values with mean values
 data = data.replace([np.inf, -np.inf], np.nan)
 data = data.fillna(data.mean())
-data.head()
+#data.head()
 
 """Finally, I would like to segregate the date to day, month and year in order to merge with the retrenchment dataset later on"""
 
@@ -97,8 +97,8 @@ Results: There is no indication that HDI is being affected by COVID-19 as the ra
 Therefore, HDI is not a good variable to use for my retrenchment visualizations later on
 """
 
-data.plot.scatter(x='POP', y='HDI')
-plt.xticks(rotation=90)
+#data.plot.scatter(x='POP', y='HDI')
+#plt.xticks(rotation=90)
 
 """Next, I am going to explore the STI variable in my dataset
 
@@ -124,16 +124,16 @@ Results: There is a pattern across the whole month (1-30days) for 2 years
 Therefore, STI seems to be a good variable to use for my retrenchment visualizations later on
 """
 
-fig, ax = plt.subplots(figsize = (15, 6))
+#fig, ax = plt.subplots(figsize = (15, 6))
 
-sns.lineplot(data, x= "month", y ="STI", hue = data["day"], palette = "magma_r")
+#sns.lineplot(data, x= "month", y ="STI", hue = data["day"], palette = "magma_r")
 
-ax.set_title("Seasonal STI")
-ax.set_xlabel("day")
-ax.set_ylabel("STI")
+#ax.set_title("Seasonal STI")
+#ax.set_xlabel("day")
+#ax.set_ylabel("STI")
 
-data.plot.scatter(x='POP', y='STI',color="red")
-plt.xticks(rotation=90)
+#data.plot.scatter(x='POP', y='STI',color="red")
+#plt.xticks(rotation=90)
 
 """I did a distributional plot to have a clearer view of my insights
 
@@ -148,9 +148,9 @@ The distributional plot is skewed towards the right which tells me that COVID-19
 ```
 """
 
-f, axes = plt.subplots(1,1, figsize = (16, 5))
-g1 = sns.distplot(data["STI"], color="red",ax = axes)
-plt.title("Distributional of STI")
+#f, axes = plt.subplots(1,1, figsize = (16, 5))
+#g1 = sns.distplot(data["STI"], color="red",ax = axes)
+#plt.title("Distributional of STI")
 
 """### 3.3 GDPCAP
 It measures the country's economic activity *(↑ GDPCAP = ↓ population)*
@@ -173,16 +173,16 @@ Results: There is no indication that GDPCAP is being affected by COVID-19 as the
 Therefore, GDPCAP is not a good variable to use for my retrenchment visualizations later on
 """
 
-fig, ax = plt.subplots(figsize = (15, 6))
+#fig, ax = plt.subplots(figsize = (15, 6))
 
-sns.lineplot(data, x="month",y="GDPCAP", hue = data["day"], palette = "magma_r")
+#sns.lineplot(data, x="month",y="GDPCAP", hue = data["day"], palette = "magma_r")
 
-ax.set_title("Seasonal GDPCAP")
-ax.set_xlabel("day")
-ax.set_ylabel("GDPCAP")
+#ax.set_title("Seasonal GDPCAP")
+#ax.set_xlabel("day")
+#ax.set_ylabel("GDPCAP")
 
-data.plot.scatter(x='POP', y='GDPCAP',color="orange")
-plt.xticks(rotation=90)
+#data.plot.scatter(x='POP', y='GDPCAP',color="orange")
+#plt.xticks(rotation=90)
 
 """### 3.4 TC (Total Cases)
 
@@ -195,15 +195,15 @@ However, some industries do not have WFH policies where retrenchment will jump i
 I plotted a time-series plot to view the number of COVID-19 cases in Singapore
 """
 
-built_TC = data['TC'].value_counts().sort_index()
-fig, ax = plt.subplots(1, 1, figsize=(18, 5))
+#built_TC = data['TC'].value_counts().sort_index()
+#fig, ax = plt.subplots(1, 1, figsize=(18, 5))
 
-ax.plot(built_TC.index, built_TC, color='#d1495b')
+#ax.plot(built_TC.index, built_TC, color='#d1495b')
 
-for s in ['top', 'right']:
-    ax.spines[s].set_visible(False)
+#for s in ['top', 'right']:
+#    ax.spines[s].set_visible(False)
 
-ax.grid()
+#ax.grid()
 
 #plt.show()
 
@@ -217,15 +217,15 @@ I do not see any logic between total deaths and retrenchment rate
 #Inspired by this notebook : https://www.kaggle.com/gergelycsords/impact-of-covid-19-pandemic-some-visualization
 
 import matplotlib.dates as md
-fig1, ax = plt.subplots(figsize = (15, 6))
+#fig1, ax = plt.subplots(figsize = (15, 6))
 
-sns.lineplot(data=data, x='DATE', y='TD', hue='COUNTRY', legend=False, palette='Accent_r')
+#sns.lineplot(data=data, x='DATE', y='TD', hue='COUNTRY', legend=False, palette='Accent_r')
 
-ax.set_title("Total deaths by countries")
-ax.set_xlabel("Date")
-ax.set_ylabel("Counts")
+#ax.set_title("Total deaths by countries")
+#ax.set_xlabel("Date")
+#ax.set_ylabel("Counts")
 
-ax.xaxis.set_major_formatter(md.DateFormatter('%Y-%m-%d'))
+#ax.xaxis.set_major_formatter(md.DateFormatter('%Y-%m-%d'))
 
 """#### Inspecting time series and rolling mean
 Rolling means (moving averages) are generally used to smooth out short-term fluctuations in time series data and highlight long-term trends
@@ -233,44 +233,44 @@ Rolling means (moving averages) are generally used to smooth out short-term fluc
 
 #Inspecting time series and rolling mean: (Take the average of the last 12-months)
 
-crossing1 = data[['DATE', 'TD']].groupby('DATE').sum()
-tseries = data.groupby(['DATE'])['TD'].agg(
-    ['sum']).reset_index().rename(columns={'sum': 'TD'})
+#crossing1 = data[['DATE', 'TD']].groupby('DATE').sum()
+#tseries = data.groupby(['DATE'])['TD'].agg(
+#    ['sum']).reset_index().rename(columns={'sum': 'TD'})
 
-tseries = tseries.set_index('DATE')
+#tseries = tseries.set_index('DATE')
 
-fig = plt.subplots(figsize=(20, 8))
+#fig = plt.subplots(figsize=(20, 8))
 
-g = sns.lineplot(x=tseries.index, y='TD',
-                 data=tseries, label="Actual Time Series")
+#g = sns.lineplot(x=tseries.index, y='TD',
+#                 data=tseries, label="Actual Time Series")
 
-rmean = crossing1.rolling(12, win_type='triang').mean()
+#rmean = crossing1.rolling(12, win_type='triang').mean()
 
-g = sns.lineplot(x=rmean.index, y='TD',
-                 data=rmean, label="Rolling Mean 12 Months")
+#g = sns.lineplot(x=rmean.index, y='TD',
+#                 data=rmean, label="Rolling Mean 12 Months")
 
-plt.legend(fontsize='xx-large')
+#plt.legend(fontsize='xx-large')
 #plt.show()
 
-built_TD = data['TD'].value_counts().sort_index()
-fig, ax = plt.subplots(1, 1, figsize=(18, 5))
+#built_TD = data['TD'].value_counts().sort_index()
+#fig, ax = plt.subplots(1, 1, figsize=(18, 5))
 
-ax.plot(built_TD.index, built_TD, color='#66a182')
+#ax.plot(built_TD.index, built_TD, color='#66a182')
 
-for s in ['top', 'right']:
-    ax.spines[s].set_visible(False)
+#for s in ['top', 'right']:
+#    ax.spines[s].set_visible(False)
 
-ax.grid()
+#ax.grid()
 
 #plt.show()
 
 """Now, to take a look at my overall COVID-19 dataset for further visualizations"""
 
-def impact(x):
-    y = data[['CODE','COUNTRY','DATE','HDI','TC','TD','STI','POP','GDPCAP']][data["COUNTRY"] == x]
-    y = y.sort_values(by="CODE",ascending=False)
-    return y.head(15)
-impact("Singapore")
+#def impact(x):
+#    y = data[['CODE','COUNTRY','DATE','HDI','TC','TD','STI','POP','GDPCAP']][data["COUNTRY"] == x]
+#    y = y.sort_values(by="CODE",ascending=False)
+#    return y.head(15)
+#impact("Singapore")
 
 """Results: 
 1. Noticed that HDI and GDPCAP are constant
@@ -293,21 +293,21 @@ POP= data[data['COUNTRY']=='Singapore'].groupby(['DATE']).agg({'POP':['sum']})
 STI = data[data['COUNTRY']=='Singapore'].groupby(['DATE']).agg({'STI':['sum']})
 total3= POP.join(STI)
 
-plt.figure(figsize=(15,10))
+#plt.figure(figsize=(15,10))
 
-plt.subplot(2, 2, 1)
-total1.plot(ax=plt.gca(), title='Singapore')
-plt.ylabel("Counts", size=13)
-
-
-plt.subplot(2, 2, 2)
-total2.plot(ax=plt.gca(), title='Singapore')
-plt.ylabel("Counts", size=13)
+#plt.subplot(2, 2, 1)
+#total1.plot(ax=plt.gca(), title='Singapore')
+#plt.ylabel("Counts", size=13)
 
 
-plt.subplot(2, 2, 3)
-total3.plot(ax=plt.gca(), title='Singapore')
-plt.ylabel("Counts", size=13)
+#plt.subplot(2, 2, 2)
+#total2.plot(ax=plt.gca(), title='Singapore')
+#plt.ylabel("Counts", size=13)
+
+
+#plt.subplot(2, 2, 3)
+#total3.plot(ax=plt.gca(), title='Singapore')
+#plt.ylabel("Counts", size=13)
 
 #print(total2)
 
@@ -319,7 +319,6 @@ Thus, due to the mismatched of the granularity data, I have decided to standardi
 """
 
 # Standardize the date data format to yearly
-import os
 dfyearnumerical=data.groupby(['COUNTRY','year']).agg({'HDI': ['sum'],'TC': ['sum'],'TD': ['sum'],'STI': ['sum'],'POP': ['sum'],'GDPCAP': ['sum']}).reset_index()
 
 """# 4. Final Dataset
@@ -372,10 +371,10 @@ from plotly.subplots import make_subplots
 finalindustry = finalindustry[finalindustry.retrench != '-'] #quick fix pt 2?
 finalindustry['retrench'] = finalindustry['retrench'].astype('int') #quick fix?
 # Bar plot of retrenchment rate over the years by industry type
-plt.rcParams['figure.figsize']=(17,7)
-sns.set(style="whitegrid")
-chart=sns.barplot(data=finalindustry, x="industry3", y="retrench", hue="year", palette="pastel")
-chart.set_xticklabels(chart.get_xticklabels(), rotation=45, horizontalalignment='right')
+#plt.rcParams['figure.figsize']=(17,7)
+#sns.set(style="whitegrid")
+#chart=sns.barplot(data=finalindustry, x="industry3", y="retrench", hue="year", palette="pastel")
+#chart.set_xticklabels(chart.get_xticklabels(), rotation=45, horizontalalignment='right')
 
 fig_retrenchment = px.line(finalindustry,  x='year', y='retrench', color='industry3', #facet_col='year',
             labels=dict(industry1 = 'Industries', retrench = 'Number of Workers Retrenched', construction='Construction')
@@ -394,7 +393,6 @@ fig.update_layout(
 
 colors = ["#2A66DE", "#FFC32B","#d4c2b6","#b5829b"]
 #print(finalindustry.industry1.unique())
-figureArray = []
 figureDict = {}
 namelist = []
 for r, c in zip(finalindustry.industry1.unique(), colors):
@@ -414,7 +412,6 @@ for r, c in zip(finalindustry.industry1.unique(), colors):
         secondary_y=True,)
     fig.update_layout(title=title)
     fig.update_xaxes()
-    figureArray.append(fig)
     figureDict.update({r:fig})
     namelist.append(r)
 #    fig.show()
@@ -450,7 +447,6 @@ for r, c in zip(finalindustry.industry2.unique(), colors):
         go.Scatter(x=[plot_df.year, plot_df.industry2], y=plot_df[('STI', 'sum')], name="STI"),
         secondary_y=True,)
     fig.update_layout(title=title)
-    figureArray.append(fig)
     figureDict.update({r:fig})
     namelist.append(r)
 

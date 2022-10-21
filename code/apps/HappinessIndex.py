@@ -40,55 +40,55 @@ import os
 # Read Data for WHR 2018
 df18 = pd.read_csv('../csv/2018.csv')
 
-df18.head()
+#df18.head()
 
-df18.isnull().sum()
+#df18.isnull().sum()
 
 df18 = df18.rename(columns = {'Country or region': 'Country', 'Score': 'Score 2018', 'Healthy life expectancy': 'Life expectancy'})
 
-df18.head()
+#df18.head()
 
 # Read Data for WHR 2019
 df19 = pd.read_csv('../csv/2019.csv')
 
-df19.head()
+#df19.head()
 
-df19.isnull().sum()
+#df19.isnull().sum()
 
 df19 = df19.rename(columns = {'Country or region': 'Country','Score': 'Score 2019', 'Healthy life expectancy': 'Life expectancy'})
 
-df19.head()
+#df19.head()
 
 # Read Data for WHR 2020
 df20 = pd.read_csv('../csv/2020.csv')
 
-df20.head()
+#df20.head()
 
-df20.isnull().sum()
+#df20.isnull().sum()
 
 df20 = df20.rename(columns = {'Country name': 'Country', 'Ladder score': 'Score 2020','Healthy life expectancy': 'Life expectancy'})
 
-df20.head()
+#df20.head()
 
 # Read Data for WHR 2021
 df21 = pd.read_csv('../csv/2021.csv')
 
-df21.head()
+#df21.head()
 
-df21.isnull().sum()
+#df21.isnull().sum()
 
 df21 = df21.rename(columns = {'Country name': 'Country', 'Ladder score': 'Score 2021','Healthy life expectancy': 'Life expectancy'})
 
-df21.head()
+#df21.head()
 
 # Read Data for WHR COVID Data
 dfCovid = pd.read_csv('../csv/WHRCovid21.csv')
 
-dfCovid.head()
+#dfCovid.head()
 
 dfCovid = dfCovid.rename(columns = {'Country name': 'Country'})
 
-dfCovid.head()
+#dfCovid.head()
 
 # DATA ANALYSIS
 
@@ -101,12 +101,12 @@ ct_df18 = pd.concat([df18_head, df18_tail])
 #print(ct_df18)
 
 # Display top 10 and botom 10 countries Happiness Scores for 2018
-plt.figure(figsize = (35,8)) # Adjust size of plot for it to be read
-sns.set(font_scale=1.2)
-ax18 = sns.barplot(x = "Country", y = "Score 2018", data = ct_df18, palette = "brg_r")
+#plt.figure(figsize = (35,8)) # Adjust size of plot for it to be read
+#sns.set(font_scale=1.2)
+#ax18 = sns.barplot(x = "Country", y = "Score 2018", data = ct_df18, palette = "brg_r")
 
-for p in ax18.patches:
-  ax18.text(p.get_x() + p.get_width()/2., p.get_height(), '{0:.3f}'.format(p.get_height()), fontsize = 12, color = 'maroon', ha = 'center', va = 'bottom')
+#for p in ax18.patches:
+#  ax18.text(p.get_x() + p.get_width()/2., p.get_height(), '{0:.3f}'.format(p.get_height()), fontsize = 12, color = 'maroon', ha = 'center', va = 'bottom')
 
 fig2018head = px.bar(data_frame=df18_head, x = 'Country', y= 'Score 2018',text = 'Score 2018', 
                     color = 'Country', title='Top 10 Happiest Countries in 2018',text_auto='.2f',
@@ -128,12 +128,12 @@ ct_df19 = pd.concat([df19_head, df19_tail])
 #print(ct_df19)
 
 # Display top 10 and botom 10 countries Happiness Scores for 2019
-plt.figure(figsize = (35,8)) # Adjust size of plot for it to be read
-sns.set(font_scale=1.2)
-ax19 = sns.barplot(x = "Country", y = "Score 2019", data = ct_df19, palette = "brg_r")
+#plt.figure(figsize = (35,8)) # Adjust size of plot for it to be read
+#sns.set(font_scale=1.2)
+#ax19 = sns.barplot(x = "Country", y = "Score 2019", data = ct_df19, palette = "brg_r")
 
-for p in ax19.patches:
-  ax19.text(p.get_x() + p.get_width()/2., p.get_height(), '{0:.3f}'.format(p.get_height()), fontsize = 12, color = 'maroon', ha = 'center', va = 'bottom')
+#for p in ax19.patches:
+#  ax19.text(p.get_x() + p.get_width()/2., p.get_height(), '{0:.3f}'.format(p.get_height()), fontsize = 12, color = 'maroon', ha = 'center', va = 'bottom')
 
 fig2019head = px.bar(data_frame=df19_head, x = 'Country', y= 'Score 2019',text = 'Score 2019', 
                     color = 'Country', title='Top 10 Happiest Countries in 2019',text_auto='.2f',
@@ -155,12 +155,12 @@ ct_df20 = pd.concat([df20_head, df20_tail])
 #print(ct_df20)
 
 # Display top 10 and botom 10 countries Happiness Scores for 2020
-plt.figure(figsize = (35,8)) # Adjust size of plot for it to be read
-sns.set(font_scale=1.2,)
-ax20 = sns.barplot(x = "Country", y = "Score 2020", data = ct_df20, palette = "brg_r")
+#plt.figure(figsize = (35,8)) # Adjust size of plot for it to be read
+#sns.set(font_scale=1.2,)
+#ax20 = sns.barplot(x = "Country", y = "Score 2020", data = ct_df20, palette = "brg_r")
 
-for p in ax20.patches:
-  ax20.text(p.get_x() + p.get_width()/2., p.get_height(), '{0:.3f}'.format(p.get_height()), fontsize = 12, color = 'maroon', ha = 'center', va = 'bottom')
+#for p in ax20.patches:
+#  ax20.text(p.get_x() + p.get_width()/2., p.get_height(), '{0:.3f}'.format(p.get_height()), fontsize = 12, color = 'maroon', ha = 'center', va = 'bottom')
 
 fig2020head = px.bar(data_frame=df20_head, x = 'Country', y= 'Score 2020',text = 'Score 2020', 
                     color = 'Country', title='Top 10 Happiest Countries in 2020',text_auto='.2f',
@@ -182,12 +182,12 @@ ct_df21 = pd.concat([df21_head, df21_tail])
 #print(ct_df21)
 
 # Display top 10 and botom 10 countries Happiness Scores for 2021
-plt.figure(figsize = (35,8)) # Adjust size of plot for it to be read
-sns.set(font_scale=1.2)
-ax21 = sns.barplot(x = "Country", y = "Score 2021", data = ct_df21, palette = "brg_r")
+#plt.figure(figsize = (35,8)) # Adjust size of plot for it to be read
+#sns.set(font_scale=1.2)
+#ax21 = sns.barplot(x = "Country", y = "Score 2021", data = ct_df21, palette = "brg_r")
 
-for p in ax21.patches:
-  ax21.text(p.get_x() + p.get_width()/2., p.get_height(), '{0:.3f}'.format(p.get_height()), fontsize = 12, color = 'maroon', ha = 'center', va = 'bottom')
+#for p in ax21.patches:
+#  ax21.text(p.get_x() + p.get_width()/2., p.get_height(), '{0:.3f}'.format(p.get_height()), fontsize = 12, color = 'maroon', ha = 'center', va = 'bottom')
 
 fig2021head = px.bar(data_frame=df21_head, x = 'Country', y= 'Score 2021',text = 'Score 2021', 
                     color = 'Country', title='Top 10 Happiest Countries in 2021',text_auto='.2f',
@@ -206,9 +206,9 @@ fig2021tail.update_yaxes(range=[0,10])
 df19_rev = df19.drop(columns = ['Overall rank'])
 
 # Correlation heatmap for WHR 2019
-plt.figure(figsize = (15,8))
-sns.set(font_scale=2.6)
-ax_corr19 = sns.heatmap(df19_rev.corr(), annot = True, vmin = -1, vmax = 1, center = 0,annot_kws={"size": 30}, cmap = 'YlGnBu')
+#plt.figure(figsize = (15,8))
+#sns.set(font_scale=2.6)
+#ax_corr19 = sns.heatmap(df19_rev.corr(), annot = True, vmin = -1, vmax = 1, center = 0,annot_kws={"size": 30}, cmap = 'YlGnBu')
 
 figHeatmap19 = px.imshow(df19_rev.corr(), title='2019 Pearson Correlation Heatmap',text_auto='.2f',range_color=[-1,1])
 #figHeatmap.show()
@@ -227,15 +227,15 @@ df_WHR = pd.merge(h1, h2, how = 'outer', on = ['Country'])
 
 df_WHR = df_WHR.filter(like = 'Score')
 
-df_WHR.head()
+#df_WHR.head()
 
 # Average World Happines Score 
 df_WHR = df_WHR.mean()
-df_WHR.head()
+#df_WHR.head()
 
 # Plot Average World Happiness Score Bar chart
-sns.set(font_scale=1)
-df_WHR.plot(x = ['Score 2018', 'Score 2019', 'Score 2020', 'Score 2021'], title = 'Average World Happiness Score', ylabel = 'Score', kind = 'bar', color = 'aquamarine')
+#sns.set(font_scale=1)
+#df_WHR.plot(x = ['Score 2018', 'Score 2019', 'Score 2020', 'Score 2021'], title = 'Average World Happiness Score', ylabel = 'Score', kind = 'bar', color = 'aquamarine')
 
 figWHR = px.bar(data_frame=df_WHR, 
                 y=[df_WHR[0],df_WHR[1],df_WHR[2],df_WHR[3]], 
@@ -246,19 +246,19 @@ figWHR = px.bar(data_frame=df_WHR,
 figWHR.update_traces(textposition = 'outside')
 figWHR.update_yaxes(range=[0,10])
 
-df19.head()
+#df19.head()
 
-df20.head()
+#df20.head()
 
 # FIND CORRELATION
 
 # Drop Overall rank column
 df20_rev = df20.drop(columns = ['Regional indicator', 'upperwhisker', 'lowerwhisker', 'Explained by: Log GDP per capita', 'Explained by: Social support', 'Explained by: Healthy life expectancy', 'Explained by: Freedom to make life choices', 'Explained by: Generosity', 'Explained by: Perceptions of corruption', 'Dystopia + residual', 'Ladder score in Dystopia', 'Standard error of ladder score'])
-df20.append
+
 # Correlation heatmap for WHR 2020
-plt.figure(figsize = (15,8))
-sns.set(font_scale=2.6)
-ax_corr20 = sns.heatmap(df20_rev.corr(), annot = True, vmin = -1, vmax = 1, center = 0,annot_kws={"size": 30}, cmap = 'YlGnBu')
+#plt.figure(figsize = (15,8))
+#sns.set(font_scale=2.6)
+#ax_corr20 = sns.heatmap(df20_rev.corr(), annot = True, vmin = -1, vmax = 1, center = 0,annot_kws={"size": 30}, cmap = 'YlGnBu')
 
 figHeatmap20 = px.imshow(df20_rev.corr(), title='2020 Pearson Correlation Heatmap', text_auto='.2f',range_color=[-1,1])
 
