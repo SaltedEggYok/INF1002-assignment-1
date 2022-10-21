@@ -46,32 +46,44 @@ layout = html.Div(children=[
                     html.Br(),
                     #button 1
                     dbc.Row(children=[
-                        html.Button('Vaccination Rates Worldwide', 
-                            style = {'background-color':'#79E587',
-                                    'width':'16rem',
-                                    'padding':'0.5rem',
-                            },
-                        ),
+                        dcc.Link(
+                            html.Button('Vaccination Rates Worldwide', 
+                                style = {'background-color':'#79E587',
+                                        'width':'16rem',
+                                        'padding':'0.5rem',
+                                },
+                            ),
+                            href="/VaccineRates",
+                            refresh=True
+                        )
                     ]),
                     html.Br(),
                     #button 2
                     dbc.Row(children=[
-                        html.Button('Vaccine Clinics in Singapore', 
-                            style = {'background-color':'#79E587',
-                                    'width':'16rem',
-                                    'padding':'0.5rem',
-                            },
-                        ),
+                        dcc.Link(
+                            html.Button('Vaccine Clinics in Singapore', 
+                                style = {'background-color':'#79E587',
+                                        'width':'16rem',
+                                        'padding':'0.5rem',
+                                },
+                            ),
+                            href="/VaccineClinics",
+                            refresh=True
+                        )
                     ]),
                     html.Br(),
-                    #button 3
+                    #button 3 https://github.com/SaltedEggYok/INF1002-assignment-1/tree/main/csv
                     dbc.Row(children=[
-                        html.Button('Dataset', 
-                            style = {'background-color':'#79E587',
-                                    'width':'16rem',
-                                    'padding':'0.5rem',
-                            },
-                        ),
+                        dcc.Link(
+                            html.Button('Dataset', 
+                                style = {'background-color':'#79E587',
+                                        'width':'16rem',
+                                        'padding':'0.5rem',
+                                },
+                            ),
+                            href="https://github.com/SaltedEggYok/INF1002-assignment-1/tree/main/csv",
+                            refresh=True
+                        )
                     ]),
 
                 ],
@@ -105,12 +117,16 @@ layout = html.Div(children=[
                     html.Br(),
                     #button 1
                     dbc.Row(children=[
-                        html.Button('Vaccination VS Death rates', 
-                            style = {'background-color':'#548FE0',
-                                    'width':'16rem',
-                                    'padding':'0.5rem',
-                            },
-                        ),
+                        dcc.Link(
+                            html.Button('Vaccination VS Death rates', 
+                                style = {'background-color':'#548FE0',
+                                        'width':'16rem',
+                                        'padding':'0.5rem',
+                                },
+                            ),
+                            href="/VaccinationVSDeathRatio",
+                            refresh=True
+                        )
                     ]),
                     html.Br(),
                     #button 2
@@ -151,12 +167,16 @@ layout = html.Div(children=[
                     html.Br(),
                     #button 1
                     dbc.Row(children=[
-                        html.Button('Retrenchment Rates', 
-                            style = {'background-color':'#B176E8',
-                                    'width':'16rem',
-                                    'padding':'0.5rem',
-                            },
-                        ),
+                        dcc.Link(
+                            html.Button('Retrenchment Rates', 
+                                style = {'background-color':'#B176E8',
+                                        'width':'16rem',
+                                        'padding':'0.5rem',
+                                },
+                            ),
+                        href="/RetrenchmentAnalysis",
+                        refresh=True
+                        )
                     ]),
                     html.Br(),
                     #button 2
@@ -197,12 +217,16 @@ layout = html.Div(children=[
                     html.Br(),
                     #button 1
                     dbc.Row(children=[
-                        html.Button('Results', 
-                            style = {'background-color':'#E4C548',
-                                    'width':'16rem',
-                                    'padding':'0.5rem',
-                            },
-                        ),
+                        dcc.Link(
+                            html.Button('Results', 
+                                style = {'background-color':'#E4C548',
+                                        'width':'16rem',
+                                        'padding':'0.5rem',
+                                },
+                            ),
+                        href="/HappinessIndex",
+                        refresh = True
+                        )
                     ]),
                     html.Br(),
                     #button 2
@@ -212,6 +236,7 @@ layout = html.Div(children=[
                                     'width':'16rem',
                                     'padding':'0.5rem',
                             },
+
                         ),
                     ]),
                 ],
@@ -227,12 +252,6 @@ layout = html.Div(children=[
 
         ]),        
     ]),
-    #happiness
-    #    html.Div(children=[]),
-    #safety of vaccines
-    #    html.Div(children=[]),
-    #vaccinations
-    #    html.Div(children=[]),
 ])
 
 #app.run_server()

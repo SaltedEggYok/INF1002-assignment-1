@@ -9,23 +9,60 @@ from apps.app import app
 # put filenames here
 from apps import MainPage, VaccineRate, VaccineClinic, covid_vaccination_vs_death_ratio,covid_19_retrenchment_analysis, HappinessIndex
 
-dropdown = dbc.DropdownMenu(
+dropdownVacc = dbc.DropdownMenu(
     children=[
-        dbc.DropdownMenuItem("Dummy", href="/MainPage"),
-        dbc.DropdownMenuItem("Vaccine Rate", href="/VaccineRate")
+        dbc.DropdownMenuItem("Vaccine Rates", href="/VaccineRates"),
+        dbc.DropdownMenuItem("Vaccine Clinics", href="/VaccineClinics"),
+        dbc.DropdownMenuItem("Dataset", href="")
     ],
     nav = True,
     in_navbar = True,
-    label = "Explore",
+    label = "Vaccinations",
+    color='#2AD540',
 )
+
+dropdownDeath = dbc.DropdownMenu(
+    children=[
+        dbc.DropdownMenuItem("Vaccination VS Death Ratios", href="/VaccinationVSDeathRatio"),
+        dbc.DropdownMenuItem("Dataset", href="")
+    ],
+    nav = True,
+    in_navbar = True,
+    label = "Safety of Vaccines",
+    color='#2754D8',
+)
+
+dropdownRet = dbc.DropdownMenu(
+    children=[
+        dbc.DropdownMenuItem("Retrenchment Analysis", href="/RetrenchmentAnalysis"),
+        dbc.DropdownMenuItem("Dataset", href="")
+    ],
+    nav = True,
+    in_navbar = True,
+    label = "Retrenchment",
+    color='#8E38DE',
+)
+
+dropdownHappy = dbc.DropdownMenu(
+    children=[
+        dbc.DropdownMenuItem("Happiness Index", href="/HappinessIndex"),
+        dbc.DropdownMenuItem("Dataset", href="")
+    ],
+    nav = True,
+    in_navbar = True,
+    label = "Happiness",
+    color='#DFB820',
+)
+
+
 navButtons = dbc.Nav(
     children=[
-        dbc.Button("Dummy", color="primary",href="/MainPage", className = "me-1"),
-        dbc.Button("Vaccine Rates", color="primary",href="/VaccineRates",className = "me-1"),
-        dbc.Button("Vaccine Clinics", color="primary",href="/VaccineClinics",className = "me-1"),
-        dbc.Button("Retrenchment Analysis", color="primary",href="/RetrenchmentAnalysis",className = "me-1"),
-        dbc.Button("Vaccination VS Death Ratio", color="primary",href="/VaccinationVSDeathRatio",className = "me-1"),
-        dbc.Button("Happiness Index", color="primary",href="/HappinessIndex",className = "me-1"),
+        dbc.Button("Home", color="primary",href="/MainPage", className = "me-1"),
+#        dbc.Button("Vaccine Rates", color="primary",href="/VaccineRates",className = "me-1"),
+#        dbc.Button("Vaccine Clinics", color="primary",href="/VaccineClinics",className = "me-1"),
+#        dbc.Button("Retrenchment Analysis", color="primary",href="/RetrenchmentAnalysis",className = "me-1"),
+#        dbc.Button("Vaccination VS Death Ratio", color="primary",href="/VaccinationVSDeathRatio",className = "me-1"),
+#        dbc.Button("Happiness Index", color="primary",href="/HappinessIndex",className = "me-1"),
 #dbc.Button("Primary", color="primary",className = "me-1"),
     ],
     #navbar=True
@@ -39,7 +76,7 @@ navbar = dbc.Navbar(
                 dbc.Row(
                     [
                         #dbc.Col(html.Img(src="/assets/virus.png", height="30px")), #remove this / replace this
-                        dbc.Col(dbc.NavbarBrand("COVID-19 DASH", className="ml-2")),
+                        dbc.Col(dbc.NavbarBrand("COVID-19 Analysis", className="ml-2")),
                     ],
                     align="center",
                     #no_gutters=True, #useless
@@ -50,7 +87,7 @@ navbar = dbc.Navbar(
             dbc.Collapse(
                 dbc.Nav(
                     # right align dropdown menu with ml-auto className
-                    [navButtons], className="ml-auto", navbar=True
+                    [navButtons,dropdownVacc,dropdownDeath,dropdownRet,dropdownHappy], className="ml-auto", navbar=True
                 ),
                 id="navbar-collapse2",
                 navbar=True,
