@@ -74,11 +74,13 @@ def swapDisplay(choice):
     match choice:
         case 'HVR':
             figure1 = px.bar(top5vaxratesum,  x="Country", y="% of population vaccinated", color="Country", text = "% of population vaccinated")
-            figure1.update_traces(textposition = 'outside')
+            #figure1.update_traces(textposition = 'outside')
+            figure1.update_yaxes(range=[0,100])
             titleText = 'Top 5 countries with highest rate of vaccination'
         case 'HFVR':
             figure1 = px.bar(top5fullvaxratesum,  x="Country", y="% of population fully vaccinated", color="Country", text = "% of population fully vaccinated")
-            figure1.update_traces(textposition = 'outside')
+            #figure1.update_traces(textposition = 'outside')
+            figure1.update_yaxes(range=[0,100])
             titleText = 'Top countries with highest rate of full vaccinations'
         case 'SVR':
             figure1 = dash_table.DataTable(
@@ -98,11 +100,13 @@ def swapDisplay(choice):
                 )        
         case 'LVR':
             figure1 = px.bar(bot5vaxratesumsort,  x="Country", y="% of population vaccinated", color="Country", text = "% of population vaccinated")
-            figure1.update_traces(textposition = 'outside')
+            #figure1.update_traces(textposition = 'outside')
+            figure1.update_yaxes(range=[0,100])
             titleText = 'Bottom 5 countries with lowest rate of vaccination'
         case 'LFVR':
             figure1 = px.bar(bot5fullvaxratesumsort,  x="Country", y="% of population fully vaccinated", color="Country", text = "% of population fully vaccinated")
-            figure1.update_traces(textposition = 'outside')
+            #figure1.update_traces(textposition = 'outside')
+            figure1.update_yaxes(range=[0,100])
             titleText = 'Bottom countries with lowest rate of full vaccination'
         case _:
             titleText = 'Somethig went wrong'
